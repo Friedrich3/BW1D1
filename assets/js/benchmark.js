@@ -113,13 +113,14 @@ const arraySelectedAnswers = [];
 document.addEventListener("load", init());
 
 function init() {
+
   //l'ordine che seguirà il Flusso di codice: Visualizzazione Domanda/Riposta/e - Timer - QuestionCounter - Img(opzionale) - Eventlistner Risposta - EventListener Procedi -  Ripeti init per 2nd domanda fino a 10
   resetList();
   setTimer();
-
   questionAnswer();
   saveDatas();
-}
+
+
 
 //AGGIUNGERE EVENTLISTNER CHE SALVA LA VALUE DELLA RISPOSTA CLICKATA SE CORRETTA NEL LOCAL STORAGE
 function saveDatas() {
@@ -129,8 +130,10 @@ function saveDatas() {
   //al click del bottone prendi il value della risposta che è stata portata
 }
 
-btnBenchmark.addEventListener("click", function () {
-  //Event listner per il ciclo delle risposte fino all'ultima dell'array fornito e poi va nella pagina successiva
+
+btnBenchmark.addEventListener("click", function () {          //Event listner per il ciclo delle risposte fino all'ultima dell'array fornito e poi va nella pagina successiva
+    clearTimeout(timerIntervalFunction);
+    clearInterval(timerInterval);
   const textAnswer = document.querySelector(".selected");
   if (textAnswer !== null) {
     const string = textAnswer.innerText;
@@ -140,7 +143,6 @@ btnBenchmark.addEventListener("click", function () {
   }
 
   if (questionCounter === questions.length) {
-    clearTimeout(timerInterval);
     //SALVA LE RISPOSTE CORRETTE DENTRO UN ARRAY JSON vedi(https://www.geeksforgeeks.org/how-to-store-an-array-in-localstorage/)
     let selectedString = JSON.stringify(arraySelectedAnswers);
     localStorage.setItem("Selected", selectedString);
@@ -150,19 +152,23 @@ btnBenchmark.addEventListener("click", function () {
   }
 });
 
-answerList.addEventListener("click", function (element) {
-  if (element.target.nodeName === "LI") {
-    const allAnswers = answerList.querySelectorAll("#answerList li");
-    allAnswers.forEach((answer) => answer.classList.remove("selected"));
-    element.target.classList.toggle("selected");
-    btnBenchmark.toggleAttribute("disabled");
-  }
+answerList.addEventListener("click", function(event) {
+    if (event.target.nodeName === "LI") {
+        // Rimuovi la classe 'selected' da tutti gli elementi
+        const allItems = answerList.querySelectorAll('li');
+        allItems.forEach(item => item.classList.remove('selected'));       
+        // Aggiungi la classe 'selected' solo all'elemento cliccato
+        event.target.classList.add("selected");
+        // Abilita il pulsante benchmark
+        btnBenchmark.removeAttribute("disabled");
+    }
 });
 
 document.addEventListener("DOMContentLoaded", (event) => {
   // Event listener per quando il DOM è caricato, il codice viene eseguito solamente quando il DOM è caricato
   timerInterval = setInterval(updateTimer, 1000); // Avvia il timer ogni secondo, 1000 millisecondi = 1 secondo
 });
+
 
 function questionAnswer() {
   benchmarkTitle.innerText = questions[questionCounter].question;
@@ -179,9 +185,15 @@ function questionAnswer() {
 }
 //AGGIUNGERE FUNZIONE CHE RESETTA IL TIMER
 function setTimer() {
+    clearTimeout(timerIntervalFunction);
+    clearInterval(timerInterval);
+    timeLeft = 45;
+    updateTimer();
+    timerInterval = setInterval(updateTimer, 1000);
   if (questionCounter < questions.length) {
     timerIntervalFunction = setTimeout(function () {
       const textAnswer = document.querySelector(".selected");
+      btnBenchmark.click();
       if (textAnswer !== null) {
         const string = textAnswer.innerText;
         arraySelectedAnswers.push(string);
@@ -197,17 +209,19 @@ function setTimer() {
   }
 }
 
+
 function questionCount(index) {
   //funzione richiamata da questionAnswer che gestisce il counter delle domande
   const questionNumber = document.getElementById("questionNumber");
   questionNumber.innerText = `QUESTION ${index + 1}/${questions.length}`;
 }
 function resetList() {
-  benchmarkTitle.innerText = "";
-  answerList.innerHTML = "";
-  btnBenchmark.setAttribute("disabled", true);
-  updateTimer();
-  clearInterval(timerIntervalFunction);
+
+    benchmarkTitle.innerText = "";
+    answerList.innerHTML = "";
+    btnBenchmark.setAttribute("disabled", "true");
+    updateTimer();
+    clearInterval(timerIntervalFunction);
 }
 
 function randomize() {
@@ -269,7 +283,9 @@ function updateTimer() {
     progressCircle.style.strokeDashoffset = totalLength - progress;
   } else {
     clearInterval(timerInterval);
+    btnBenchmark.click();
     // Qui puoi aggiungere del codice per gestire la fine del timer
     // Per esempio, mostrare un messaggio o passare alla prossima domanda
   }
+
 }
