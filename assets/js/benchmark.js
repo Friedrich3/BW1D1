@@ -115,14 +115,14 @@ const arraySelectedAnswers =[];
 
 document.addEventListener("load", init());
 
-function init() {       //l'ordine che seguirà il Flusso di codice: Visualizzazione Domanda/Riposta/e - Timer - QuestionCounter - Img(opzionale) - Eventlistner Risposta - EventListener Procedi -  Ripeti init per 2nd domanda fino a 10 
+function init() {
     resetList();
-    setTimer(); 
-
-    questionAnswer(); 
+    setTimer();
+    questionAnswer();
     saveDatas();
-    
+    arraySelectedAnswers[questionCounter - 1] = null;
 }
+
 
 //AGGIUNGERE EVENTLISTNER CHE SALVA LA VALUE DELLA RISPOSTA CLICKATA SE CORRETTA NEL LOCAL STORAGE
 function saveDatas(){
@@ -137,24 +137,39 @@ function saveDatas(){
 }
 
 
-btnBenchmark.addEventListener("click" , function(){                 //Event listner per il ciclo delle risposte fino all'ultima dell'array fornito e poi va nella pagina successiva
-    if(questionCounter === questions.length){
-        clearTimeout(timerInterval);
+btnBenchmark.addEventListener("click", function() {
+    clearTimeout(timerIntervalFunction);
+    clearInterval(timerInterval);
+    if (questionCounter === questions.length) {
         window.location.href = "../../results.html";
-    }else{
+    } else {
         init();
     }
 });
 
-answerList.addEventListener ("click" , function (element){
-    if(element.target.nodeName === "LI"){
-        btnBenchmark.toggleAttribute("disabled");
-        element.target.classList.add("selected");
-}});
 
-document.addEventListener('DOMContentLoaded', (event) => { // Event listener per quando il DOM è caricato, il codice viene eseguito solamente quando il DOM è caricato
-    timerInterval = setInterval(updateTimer, 1000);// Avvia il timer ogni secondo, 1000 millisecondi = 1 secondo
+answerList.addEventListener("click", function(event) {
+    if (event.target.nodeName === "LI") {
+        // Rimuovi la classe 'selected' da tutti gli elementi
+        const allItems = answerList.querySelectorAll('li');
+        allItems.forEach(item => item.classList.remove('selected'));
+        
+        // Aggiungi la classe 'selected' solo all'elemento cliccato
+        event.target.classList.add("selected");
+        
+        // Abilita il pulsante benchmark
+        btnBenchmark.removeAttribute("disabled");
+        
+        // Salva la risposta selezionata
+        const selectedAnswer = event.target.innerText;
+        arraySelectedAnswers[questionCounter - 1] = selectedAnswer;
+    }
 });
+
+
+// document.addEventListener('DOMContentLoaded', (event) => {
+//     timerInterval = setInterval(updateTimer, 1000);
+// });
 
 
 
@@ -174,15 +189,18 @@ function questionAnswer(){
 
 };
 //AGGIUNGERE FUNZIONE CHE RESETTA IL TIMER
-function setTimer(){
-    if(questionCounter < questions.length){
-        
-        timerIntervalFunction = setTimeout (function(){
-            init();
+function setTimer() {
+    clearTimeout(timerIntervalFunction);
+    clearInterval(timerInterval);
+    timeLeft = 45;
+    updateTimer();
+    timerInterval = setInterval(updateTimer, 1000);
+    if (questionCounter < questions.length) {
+        timerIntervalFunction = setTimeout(function() {
+            btnBenchmark.click();
         }, 45000);
-    }else{
-        window.location.href = "../../results.html";
-}}
+    }
+}
 
 
 
@@ -194,8 +212,8 @@ function questionCount(index) {                                              //f
 function resetList() {
     benchmarkTitle.innerText = "";
     answerList.innerHTML = "";
-    btnBenchmark.setAttribute("disabled" ,true);
-    updateTimer()
+    btnBenchmark.setAttribute("disabled", "true");
+    updateTimer();
     clearInterval(timerIntervalFunction);
 }
 
@@ -247,16 +265,15 @@ function pushRandom(arr){
 
 // Funzione per il timer e next
 
-function updateTimer() {  // Funzione per aggiornare il timer, aggiorna il timer e il cerchio di progressione
-    if (timeLeft > 0) {  //if timer è maggiore di 0 allora decrementa di un secondo e di conseguenza aggiorna il cerchio di progressione 
-        timeLeft--; 
-        timerElement.textContent = timeLeft; 
+function updateTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        timerElement.textContent = timeLeft;
         const progress = (timeLeft / 45) * totalLength;
         progressCircle.style.strokeDashoffset = totalLength - progress;
-    } else { 
+    } else {
         clearInterval(timerInterval);
-        // Qui puoi aggiungere del codice per gestire la fine del timer
-        // Per esempio, mostrare un messaggio o passare alla prossima domanda
+        btnBenchmark.click();
     }
 }
 
