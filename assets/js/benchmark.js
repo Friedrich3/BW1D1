@@ -105,20 +105,23 @@ const totalLength = progressCircle.getTotalLength(); // ottieni la lunghezza tot
 let timerInterval; // variabile per l'intervallo del timer
 const benchmarkTitle = document.getElementById("benchmarkTitle");   //INSERIRE ID TITOLO benchmark.html
 const answerList = document.getElementById("answerList");           //INSERIRE ID LIST  benchmark.html
-const btnBenchmark = document.getElementById("benchmarkButton");     //INSERIRE ID BOTTONE benchmark.html 
+const btnBenchmark = document.getElementById("benchmarkButton");     //INSERIRE ID BOTTONE benchmark.html
 const checkBenchmark = document.querySelectorAll(".check");          //INSERIRE CLASSE CheckBOX creati con questionAnswer();
 
 let questionCounter = 0;    //variabile globale per count questions array
-let timerInterval;
+let timerIntervalFunction;
 const arrayCorrectAnswers = [];
+const arraySelectedAnswers =[];
 
 document.addEventListener("load", init());
 
 function init() {       //l'ordine che seguirà il Flusso di codice: Visualizzazione Domanda/Riposta/e - Timer - QuestionCounter - Img(opzionale) - Eventlistner Risposta - EventListener Procedi -  Ripeti init per 2nd domanda fino a 10 
     resetList();
-    setTimer();                      
+    setTimer(); 
+
     questionAnswer(); 
     saveDatas();
+    
 }
 
 //AGGIUNGERE EVENTLISTNER CHE SALVA LA VALUE DELLA RISPOSTA CLICKATA SE CORRETTA NEL LOCAL STORAGE
@@ -146,22 +149,15 @@ btnBenchmark.addEventListener("click" , function(){                 //Event list
 answerList.addEventListener ("click" , function (element){
     if(element.target.nodeName === "LI"){
         btnBenchmark.toggleAttribute("disabled");
+        element.target.classList.add("selected");
 }});
 
 document.addEventListener('DOMContentLoaded', (event) => { // Event listener per quando il DOM è caricato, il codice viene eseguito solamente quando il DOM è caricato
-    timerInterval = setInterval(updateTimer, 1000); // Avvia il timer ogni secondo, 1000 millisecondi = 1 secondo
+    timerInterval = setInterval(updateTimer, 1000);// Avvia il timer ogni secondo, 1000 millisecondi = 1 secondo
+});
 
-    // Aggiungi event listener per la selezione delle risposte
-    const answerItems = document.querySelectorAll('#answerList li'); // Seleziona tutti gli elementi con id 'answers'
-    answerItems.forEach(item => { 
-        item.addEventListener('click', function() { // Aggiungi un event listener per quando un elemento viene cliccato
-            answerItems.forEach(i => i.classList.remove('selected')); // fa in modo che una sola domanda può essere selezionata
-            this.classList.add('selected'); // aggiunge la classe selezionata all'elemento cliccato
-        });
-    });
 
-}); 
-    
+
 
 function questionAnswer(){
     benchmarkTitle.innerText = questions[questionCounter].question;  
@@ -181,12 +177,13 @@ function questionAnswer(){
 function setTimer(){
     if(questionCounter < questions.length){
         
-        timerInterval = setTimeout (function(){
+        timerIntervalFunction = setTimeout (function(){
             init();
-        }, 3000);
+        }, 45000);
     }else{
         window.location.href = "../../results.html";
 }}
+
 
 
 
@@ -198,7 +195,8 @@ function resetList() {
     benchmarkTitle.innerText = "";
     answerList.innerHTML = "";
     btnBenchmark.setAttribute("disabled" ,true);
-    clearInterval(timerInterval);
+    updateTimer()
+    clearInterval(timerIntervalFunction);
 }
 
 
