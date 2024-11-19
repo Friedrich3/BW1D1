@@ -121,7 +121,7 @@ function init() {
   saveDatas();
 
 
-
+}
 //AGGIUNGERE EVENTLISTNER CHE SALVA LA VALUE DELLA RISPOSTA CLICKATA SE CORRETTA NEL LOCAL STORAGE
 function saveDatas() {
   arrayCorrectAnswers.push(questions[questionCounter - 1].correct_answer);
@@ -164,11 +164,6 @@ answerList.addEventListener("click", function(event) {
     }
 });
 
-document.addEventListener("DOMContentLoaded", (event) => {
-  // Event listener per quando il DOM è caricato, il codice viene eseguito solamente quando il DOM è caricato
-  timerInterval = setInterval(updateTimer, 1000); // Avvia il timer ogni secondo, 1000 millisecondi = 1 secondo
-});
-
 
 function questionAnswer() {
   benchmarkTitle.innerText = questions[questionCounter].question;
@@ -188,7 +183,7 @@ function setTimer() {
     clearTimeout(timerIntervalFunction);
     clearInterval(timerInterval);
     timeLeft = 45;
-    updateTimer();
+    //updateTimer();
     timerInterval = setInterval(updateTimer, 1000);
   if (questionCounter < questions.length) {
     timerIntervalFunction = setTimeout(function () {
@@ -201,7 +196,7 @@ function setTimer() {
         arraySelectedAnswers.push("null");
       }
       init();
-    }, 4500);
+    }, 46000);
   } else {
     let selectedString = JSON.stringify(arraySelectedAnswers);
     localStorage.setItem("Selected", selectedString);
@@ -220,7 +215,6 @@ function resetList() {
     benchmarkTitle.innerText = "";
     answerList.innerHTML = "";
     btnBenchmark.setAttribute("disabled", "true");
-    updateTimer();
     clearInterval(timerIntervalFunction);
 }
 
@@ -283,7 +277,6 @@ function updateTimer() {
     progressCircle.style.strokeDashoffset = totalLength - progress;
   } else {
     clearInterval(timerInterval);
-    btnBenchmark.click();
     // Qui puoi aggiungere del codice per gestire la fine del timer
     // Per esempio, mostrare un messaggio o passare alla prossima domanda
   }
