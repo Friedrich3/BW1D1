@@ -205,10 +205,12 @@ function setTimer() {
 }
 
 
-function questionCount(index) {
-  //funzione richiamata da questionAnswer che gestisce il counter delle domande
-  const questionNumber = document.getElementById("questionNumber");
-  questionNumber.innerText = `QUESTION ${index + 1}/${questions.length}`;
+
+
+function questionCount(index) {                                              //funzione richiamata da questionAnswer che gestisce il counter delle domande
+    const questionNumber = document.getElementById("questionNumber");
+    questionNumber.innerHTML = `QUESTION ${index + 1} <span class = "changeColor"> / ${questions.length} </span>`;
+
 }
 function resetList() {
 
