@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Epicode - Benchmark</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/css/style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <img src="assets/img/epicode_logo.png" alt="image.png" class="logo" />
-      </header>
 
-      <main id="mainBenchmark">
-        <div class="question-header">
-          <h4 id="benchmarkTitle"></h4>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Epicode - Benchmark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <img src="assets/img/epicode_logo.png" alt="image.png" class="logo" />
+    </header>
+
+    <main id="mainBenchmark">
+      <section>
+        <div class="question-header"> <!--Div grande-->
+          <h4 id="benchmarkTitle"></h4> <!--titolo-->
           <div id="timer">
             <svg id="timer-circle" width="150" height="150">
-              <circle id="timer-background" cx="75" cy="75" r="70" stroke="#00FFFF" stroke-width="10" fill="none" stroke-opacity="0.2"></circle>
-              <circle id="progress-circle" cx="75" cy="75" r="70" stroke="#00FFFF" stroke-width="10" fill="none" stroke-linecap="butt"></circle>
+              <circle id="timer-background" cx="75" cy="75" r="70" stroke="#00FFFF" stroke-width="10" fill="none"
+                stroke-opacity="0.2"></circle>
+              <circle id="progress-circle" cx="75" cy="75" r="70" stroke="#00FFFF" stroke-width="10" fill="none"
+                stroke-linecap="butt"></circle>
             </svg>
 
             <div id="timer-text">
@@ -33,10 +37,10 @@
               <span id="timer-text-bottom">REMAINING</span>
             </div>
           </div>
-
         </div>
-
-        <div>
+      </section>
+      <section>
+        <div class="answerBox">
           <ul id="answerList">
             <li>Central Processing Unit</li>
             <li>Central Process Unit</li>
@@ -44,13 +48,17 @@
             <li>Central Processor Unit</li>
           </ul>
         </div>
-        <div class="question-nav">
-            <span id="questionNumber">QUESTION &nbsp; 1<span class="red-number"> / 10</span></span>
-            <button type="submit" id="benchmarkButton">PROCEED!</button>
+      </section>
+      <section>
+        <div class="questionNav">
+          <p id="questionNumber">QUESTION 1<span class="changeColor">/10</span></p>
+          <button type="submit" id="benchmarkButton" >PROCEED!</button>
         </div>
-      </main>
-    </div>
-    <script src="assets/js/benchmark.js"></script>
-  </body>
-</html>
+      </section>
 
+    </main>
+  </div>
+  <script src="assets/js/benchmark.js"></script>
+</body>
+
+</html>
