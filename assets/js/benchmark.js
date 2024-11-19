@@ -98,7 +98,11 @@ const questions = [                         //ARRAY domande
     },
 ];
 
-
+let timeLeft = 45; // parte timer da 45 sec
+const timerElement = document.getElementById('timer-text-middle'); // seleziona dove il timer viene visualizzato
+const progressCircle = document.getElementById('progress-circle'); // seleziona il cerchio di progressione
+const totalLength = progressCircle.getTotalLength(); // ottieni la lunghezza totale del cerchio di progressione
+let timerInterval; // variabile per l'intervallo del timer
 const benchmarkTitle = document.getElementById("benchmarkTitle");   //INSERIRE ID TITOLO benchmark.html
 const answerList = document.getElementById("answerList");           //INSERIRE ID LIST  benchmark.html
 const btnBenchmark = document.getElementById("benchmarkButton");     //INSERIRE ID BOTTONE benchmark.html 
@@ -130,6 +134,20 @@ answerList.addEventListener ("click" , function (element){
         btnBenchmark.toggleAttribute("disabled");
 }});
 
+document.addEventListener('DOMContentLoaded', (event) => { // Event listener per quando il DOM è caricato, il codice viene eseguito solamente quando il DOM è caricato
+    timerInterval = setInterval(updateTimer, 1000); // Avvia il timer ogni secondo, 1000 millisecondi = 1 secondo
+
+    // Aggiungi event listener per la selezione delle risposte
+    const answerItems = document.querySelectorAll('#answerList li'); // Seleziona tutti gli elementi con id 'answers'
+    answerItems.forEach(item => { 
+        item.addEventListener('click', function() { // Aggiungi un event listener per quando un elemento viene cliccato
+            answerItems.forEach(i => i.classList.remove('selected')); // fa in modo che una sola domanda può essere selezionata
+            this.classList.add('selected'); // aggiunge la classe selezionata all'elemento cliccato
+        });
+    });
+
+}); 
+    
 
 
 
@@ -167,3 +185,22 @@ function resetList() {
 //AGGIUNGERE FUNZIONE CHE RANDOMIZZA LEDOMANDE
 
 //AGGIUNGERE FUNZIONE CHE RESETTA IL TIMER
+
+
+
+
+// Funzione per il timer e next
+
+function updateTimer() {  // Funzione per aggiornare il timer, aggiorna il timer e il cerchio di progressione
+    if (timeLeft > 0) {  //if timer è maggiore di 0 allora decrementa di un secondo e di conseguenza aggiorna il cerchio di progressione 
+        timeLeft--; 
+        timerElement.textContent = timeLeft; 
+        const progress = (timeLeft / 45) * totalLength;
+        progressCircle.style.strokeDashoffset = totalLength - progress;
+    } else { 
+        clearInterval(timerInterval);
+        // Qui puoi aggiungere del codice per gestire la fine del timer
+        // Per esempio, mostrare un messaggio o passare alla prossima domanda
+    }
+}
+
