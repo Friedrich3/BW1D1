@@ -111,6 +111,7 @@ document.addEventListener("load", init());
 function init() {
     resetList();                    //l'ordine che seguirà il Flusso di codice: Visualizzazione Domanda/Riposta/e - Timer - QuestionCounter - Img(opzionale) - Eventlistner Risposta - EventListener Procedi -  Ripeti init per 2nd domanda fino a 10
     questionAnswer();
+    //CHIAMATA FUNZIONE PER IL TIMER
 }
 
 //AGGIUNGERE EVENTLISTNER CHE SALVA LA VALUE DELLA RISPOSTA CLICKATA SE CORRETTA NEL LOCAL STORAGE
@@ -122,6 +123,7 @@ btnBenchmark.addEventListener("click" , function(){                 //Event list
     }else{
         resetList();
         questionAnswer();
+        //CHIAMATA FUNZIONE PER IL TIMER
     }
 });
 
@@ -129,7 +131,6 @@ answerList.addEventListener ("click" , function (element){
     if(element.target.nodeName === "LI"){
         btnBenchmark.toggleAttribute("disabled");
 }});
-
 
 
 
