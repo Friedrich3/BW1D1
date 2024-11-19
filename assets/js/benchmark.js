@@ -105,23 +105,37 @@ const btnBenchmark = document.getElementById("benchmarkButton");     //INSERIRE 
 const checkBenchmark = document.querySelectorAll(".check");          //INSERIRE CLASSE CheckBOX creati con questionAnswer();
 
 let questionCounter = 0;    //variabile globale per count questions array
+let timerInterval;
+const arrayCorrectAnswers = [];
 
 document.addEventListener("load", init());
 
-function init() {
-    resetList();                    //l'ordine che seguirà il Flusso di codice: Visualizzazione Domanda/Riposta/e - Timer - QuestionCounter - Img(opzionale) - Eventlistner Risposta - EventListener Procedi -  Ripeti init per 2nd domanda fino a 10
-    questionAnswer();
+function init() {       //l'ordine che seguirà il Flusso di codice: Visualizzazione Domanda/Riposta/e - Timer - QuestionCounter - Img(opzionale) - Eventlistner Risposta - EventListener Procedi -  Ripeti init per 2nd domanda fino a 10 
+    resetList();
+    setTimer();                      
+    questionAnswer(); 
+    saveDatas();
 }
 
 //AGGIUNGERE EVENTLISTNER CHE SALVA LA VALUE DELLA RISPOSTA CLICKATA SE CORRETTA NEL LOCAL STORAGE
+function saveDatas(){
+    arrayCorrectAnswers.push(questions[questionCounter - 1 ].correct_answer);
+    let correctString = JSON.stringify(arrayCorrectAnswers)                        //SALVA LE RISPOSTE CORRETTE DENTRO UN ARRAY JSON vedi(https://www.geeksforgeeks.org/how-to-store-an-array-in-localstorage/)
+    localStorage.setItem("Correct" , correctString);
+
+    //al click del bottone prendi il value della risposta che è stata portata
+
+
+
+}
 
 
 btnBenchmark.addEventListener("click" , function(){                 //Event listner per il ciclo delle risposte fino all'ultima dell'array fornito e poi va nella pagina successiva
     if(questionCounter === questions.length){
+        clearTimeout(timerInterval);
         window.location.href = "../../results.html";
     }else{
-        resetList();
-        questionAnswer();
+        init();
     }
 });
 
@@ -145,6 +159,16 @@ function questionAnswer(){
     questionCounter += 1       //MODIFICA il numero della domanda corrente alla prossima iterazione tramite bottone
 
 };
+//AGGIUNGERE FUNZIONE CHE RESETTA IL TIMER
+function setTimer(){
+    if(questionCounter < questions.length){
+        
+        timerInterval = setTimeout (function(){
+            init();
+        }, 3000);
+    }else{
+        window.location.href = "../../results.html";
+}}
 
 
 //AGGIUNGERE FUNZIONE CHE RESETTA IL TIMER
@@ -156,7 +180,8 @@ function questionCount(index) {                                              //f
 function resetList() {
     benchmarkTitle.innerText = "";
     answerList.innerHTML = "";
-    btnBenchmark.toggleAttribute("disabled")
+    btnBenchmark.setAttribute("disabled" ,true);
+    clearInterval(timerInterval);
 }
 
 
