@@ -70,11 +70,8 @@ ul {
   display: inline-block;
 }
 
-.formContent form {
-  
-}
-
-#bntWelcome, #benchmarkButton {
+#bntWelcome,
+#benchmarkButton {
   padding: 1rem 3rem;
   background-color: #00ffff;
   filter: drop-shadow(0 0 8px #00ffff);
@@ -219,38 +216,40 @@ ul {
   cursor: pointer;
 }
 
-.questionNav{
+.questionNav {
   margin-top: 5rem;
 }
 
-.questionNav p{
+.questionNav p {
   padding-top: 2rem;
 }
 
-#questionNumber{
+#questionNumber {
   word-spacing: 5px;
   letter-spacing: 2px;
 }
 
-#questionNumber .changeColor{
+#questionNumber .changeColor {
   color: #d20094;
   word-spacing: 1px;
 }
 
-#benchmarkButton{
+#benchmarkButton {
   margin: 0 12% 0 0;
   float: right;
 }
-#questionNumber, #benchmarkButton{
+
+#questionNumber,
+#benchmarkButton {
   display: inline-block;
 }
 
 /*#questionNumber {
   /*left: 480px;
   Puoi modificare questo valore per spostarlo orizzontalmente */
-  /*bottom: 130px;
+/*bottom: 130px;
   /* Puoi modificare questo valore per spostarlo verticalmente */
-  /*font-size: 20px;
+/*font-size: 20px;
   font-weight: bold;
   padding: 5px 10px;
 }*/
