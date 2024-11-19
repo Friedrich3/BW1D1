@@ -165,5 +165,9 @@ function resetList() {
 
 
 //AGGIUNGERE FUNZIONE CHE RANDOMIZZA LEDOMANDE
+function randomize(){
+    
+}
 
 //AGGIUNGERE FUNZIONE CHE RESETTA IL TIMER
+
