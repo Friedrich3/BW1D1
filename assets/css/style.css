@@ -6,7 +6,6 @@
     color: white;
 }
 .container{
-    -text-align: center;
     background-image: url(/assets/img/bg.jpg);
     background-position: bottom;
     background-repeat: no-repeat;
@@ -20,8 +19,9 @@ header{
 }
 
 .logo{
-    width: 200px;
+    width: 300px;
     padding: 2rem 2rem;
+    text-align: center;
 }
 
 h1{
@@ -51,7 +51,7 @@ ul {
 .writings{
     text-align: left;
     padding-left: 4rem;
-    margin: 0 auto;
+    margin: 5rem 1rem;
     line-height: 40px;
     font-size: 16px;
 }
@@ -71,6 +71,7 @@ ul {
 
 #bntWelcome{
     padding: 1rem 3rem;
+    margin-left: 40rem;
     background-color: #00ffff;
     filter: drop-shadow(0 0 8px #00ffff);
     color: black;
@@ -84,3 +85,119 @@ ul {
     display: none;
     color: red;
 }
+
+/*TITOLO + PARAGRAFO*/
+
+.titleParagraph{
+    text-align: center;
+}
+
+.titleParagraph h2{
+    color: white;
+    font-size: 60px;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.titleParagraph p{
+   font-size: 32px;
+   margin-bottom: 3rem;
+}
+
+/* PROVA GARFICO A DONUT*/
+
+.chart{
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background: conic-gradient(#d20094 0deg 80deg, #00ffff 80deg 180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chartPosition{
+    max-width: fit-content;
+}
+
+.chart::before{
+    content: '';
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background-color: #0a113b;
+    
+}
+
+/*BOX RIGHT AND WRONG*/
+
+.boxes{
+    max-width: fit-content;
+    line-height: 40px;
+    margin-left: 15rem;
+    text-align: center;
+}
+
+.boxes, .chartPosition{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.boxOne, .boxTwo{
+    background-color: transparent;
+    filter: drop-shadow(0 0 3px #0a113b);
+    border: 2px solid #0a113b;
+    padding: 2rem 5rem;
+}
+
+.boxOne{
+    margin-bottom: 2rem;
+}
+
+.boxOne h4, .boxTwo h4{
+    font-size: 30px;
+    letter-spacing: 0.3rem;
+    font-weight: normal;
+}
+
+.boxOne p, .boxTwo p{
+    word-spacing: 0.3rem;
+}
+
+.boxOne p span, .boxTwo p span{
+    color: #d20094;
+    font-size: 20px;
+}
+
+.percentageWrong, .percentageRight{
+    font-size: 30px;
+}
+
+/*BOTTONE RATE US*/
+
+#btnRateUs {
+    padding: 1rem 3rem;
+    margin-top: 5rem;
+    background: transparent;
+    filter: drop-shadow(0 0 8px black);
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    border: 3px solid white;
+    cursor: pointer;
+}
+
+#btnRateUs:hover{
+    background-color: white;
+    color: #0a113b;
+    filter: drop-shadow(0 0 8px black);
+
+}
+
+.mainResultPage{
+    text-align: center;
+}
+
+
+
+
