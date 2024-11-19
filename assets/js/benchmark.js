@@ -162,3 +162,8 @@ function resetList() {
     answerList.innerHTML = "";
     btnBenchmark.toggleAttribute("disabled")
 }
+
+
+//AGGIUNGERE FUNZIONE CHE RANDOMIZZA LEDOMANDE
+
+//AGGIUNGERE FUNZIONE CHE RESETTA IL TIMER
