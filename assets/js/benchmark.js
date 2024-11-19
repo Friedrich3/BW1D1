@@ -131,27 +131,23 @@ answerList.addEventListener ("click" , function (element){
 }});
 
 
+function questionAnswer(){
+    benchmarkTitle.innerText = questions[questionCounter].question;  
 
-
-function questionAnswer() {
-    benchmarkTitle.innerText = questions[questionCounter].question;                                 //Sovrascrive il titolo
-
-    for (let i = 0; i < questions[questionCounter].incorrect_answers.length; i++) {               //questa funzione crea un titolo (domanda) e 1/3 risposte incorrette + 1 risposta esatta seguendo l'indice questionCounter assegnato all'array questions
+    const answerArray = randomize();
+    for(let i=0; i<answerArray.length; i++){
         const newAnswer = document.createElement("li");
-        newAnswer.innerText = questions[questionCounter].incorrect_answers[i];
+        newAnswer.innerText = answerArray[i];
         //aggiungere classi e stili 
         answerList.appendChild(newAnswer);
     }
-    const newCorrectAnswer = document.createElement("li");
-    newCorrectAnswer.innerText = questions[questionCounter].correct_answer;
-    //aggiungere classi e stili
-    answerList.appendChild(newCorrectAnswer);
-    
     questionCount(questionCounter);
-    questionCounter += 1        //MODIFICA il numero della domanda corrente alla prossima iterazione tramite bottone
-    
+    questionCounter += 1       //MODIFICA il numero della domanda corrente alla prossima iterazione tramite bottone
+
 };
 
+
+//AGGIUNGERE FUNZIONE CHE RESETTA IL TIMER
 
 function questionCount(index) {                                              //funzione richiamata da questionAnswer che gestisce il counter delle domande
     const questionNumber = document.getElementById("questionNumber");
@@ -164,6 +160,48 @@ function resetList() {
 }
 
 
-//AGGIUNGERE FUNZIONE CHE RANDOMIZZA LEDOMANDE
+function randomize(){
+    const arr = [1,2,3,4];
+    const randomArr = [];
+    
+    if(questions[questionCounter].type==="multiple"){
+        for(let i=0; i<4; i++){
+            const index = Math.floor(Math.random() * arr.length);
+            const value = arr.splice(index, 1)[0]; 
+            randomArr.push(value);
+        }
+    }else{
+        for(let i=0; i<2; i++){
+            const index = Math.floor(Math.random() * (arr.length-2));
+            const value = arr.splice(index, 1)[0]; 
+            randomArr.push(value);
+        }
+    }
+    const answerArray = pushRandom(randomArr);
+    return answerArray;
+}
 
-//AGGIUNGERE FUNZIONE CHE RESETTA IL TIMER
+function pushRandom(arr){
+    const answerArray = []
+    if(questions[questionCounter].type==="multiple"){
+        for(let i=0; i<arr.length; i++){
+            if(arr[i]!==4){
+                answerArray.push(questions[questionCounter].incorrect_answers[arr[i]-1]);
+            }else{
+                answerArray.push(questions[questionCounter].correct_answer);
+            }
+        }
+    }else{
+        for(let i=0; i<arr.length; i++){
+            if(arr[i]!==2){
+                answerArray.push(questions[questionCounter].incorrect_answers[arr[i]-1]);
+            }else{
+                answerArray.push(questions[questionCounter].correct_answer);
+            }
+        }
+    }
+    return answerArray;
+}
+
+
+
