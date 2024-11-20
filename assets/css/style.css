@@ -376,3 +376,26 @@ ul {
 .mainResultPage {
   text-align: center;
 }
+
+/*--------PAGINA 4--------*/
+
+/*---RATING STARS-----*/
+
+.ratingStars{
+  user-select: none;
+
+}
+
+.star{
+  font-size: 3rem;
+  color: #00ffff;
+  background-color: unset;
+  border: none;
+  padding: 1rem;
+  filter: drop-shadow(0 0 3px #00ffff);
+}
+
+.star:hover{
+  cursor: pointer;
+
+}
