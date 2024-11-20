@@ -286,20 +286,14 @@ ul {
 }
 
 /* PROVA GARFICO A DONUT*/
-
-
-
 .chartPosition{
-  max-width: fit-content;
+  position: relative;
 }
-
-.chart::before {
-  content: '';
-  width: 350px;
-  height: 350px;
-  border-radius: 50%;
-  background-color: #0a113b;
-
+#innerChart{
+ max-width: 13rem;
+  position: absolute;
+  bottom: 170px;   /* MISURE DA VERIFICARE*/
+  left: 150px;
 }
 
 /*BOX RIGHT AND WRONG*/
@@ -327,7 +321,7 @@ ul {
   height: 10rem;
  padding: 2rem 1rem;
   text-align: left;
-  margin-top: 2rem;
+  margin-top: 4rem;
 }
 
 .boxOne {
@@ -376,7 +370,7 @@ ul {
 }
 
 #btnRateUs:hover {
-  background-color: #00ffff;        /*STESSO STILE DEI BOTTONI QUANDO CLICCATO*/ 
+  background-color: #00ffff;        /*STESSO STILE DEI BOTTONI QUANDO*/ 
   border-color: #00ffff;
   color: #0a113b;
   filter: drop-shadow(0 0 8px black);

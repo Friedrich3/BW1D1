@@ -14,6 +14,7 @@ function init(){
   compareAnswer();
   percentages();
   quantifyAnswers();
+  examResult();
   new Chart(answerChart, {
     type: 'doughnut',
     data: {
@@ -22,12 +23,13 @@ function init(){
         label: 'Answers',
         data: [countCorrect, arraySelectedAnswers.length-countCorrect], 
         borderWidth: 0,
-        rotation: 330,
-        cutout: 150, 
+        cutout:150,
+        rotation: 30,
         backgroundColor:[
           "#00ffff",
           "#d20094"
-        ]
+        ],
+        hoverOffset:2
       }]
     },
   });
@@ -54,14 +56,32 @@ function compareAnswer(){
 }
 
 function percentages(){
-  percentageRight.textContent = `${countCorrect*10}%`;
-  percentageWrong.textContent = `${100-countCorrect*10}%`;  
+  percentageRight.textContent = `${(countCorrect/arraySelectedAnswers.length)*100}%`;                  //Corretto calcolo percetuale per flessibilità con diverse domande
+  percentageWrong.textContent = `${100-((countCorrect/arraySelectedAnswers.length)*100)}%`;  
 }
 //funzione per stampare la quantità di risposte corrette e sbagliate
 function quantifyAnswers(){
   correctAnswers.innerHTML = `<span >${countCorrect}</span> out of <span class="totalQuestions">${arraySelectedAnswers.length}</span>`;
   wrongAnswers.innerHTML = `<span >${arraySelectedAnswers.length - countCorrect}</span> out of <span class="totalQuestions">${arraySelectedAnswers.length}</span>`;
 }
+
+function examResult(){
+  const examTitle = document.getElementById("examTitle");
+  const parExam = document.getElementById("parExam");
+if((countCorrect/arraySelectedAnswers.length)*100 >= 60){
+  examTitle.innerHTML = "Congratulations!<br><span>You passed the exam.</span>";
+  const colorExamTitle = document.querySelector("#examTitle span");
+  colorExamTitle.style.color = "#00ffff";
+  parExam.innerHTML = "We'll send you the certificate in few minutes.<br/>Check your email(including promotion/spam folder)";
+}else{
+  examTitle.innerHTML = "We're sorry!<br><span>You failed the exam.</span>";
+  const colorExamTitle = document.querySelector("#examTitle span");
+  colorExamTitle.style.color = "#d20094";
+  parExam.innerHTML = "Don't worry! You can try again and get your certificate!";
+};
+};
+
+
 
 function rateUs(){
   window.location.href = "../../feedback.html";
