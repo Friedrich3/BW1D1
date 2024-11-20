@@ -6,7 +6,7 @@ new Chart(answerChart, {
     datasets: [{
       label: '# of Votes',
       data: [12, 19],
-      borderWidth: 1
+      borderWidth: 0
     }]
   },
 
