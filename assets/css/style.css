@@ -1,12 +1,10 @@
 * {
-
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
   color: white;
 }
-
 
 .container {
   background-image: url(/assets/img/bg.jpg);
@@ -16,7 +14,6 @@
   min-height: 100vh;
   padding: 0 100px 20px 100px;
 }
-
 
 header {
   margin-bottom: 2.5rem;
@@ -30,8 +27,6 @@ header {
 }
 
 h1 {
-
-
   font-size: 60px;
   font-weight: 350;
   color: white;
@@ -89,7 +84,6 @@ ul {
 #errorMessage {
   display: none;
   color: red;
-
 }
 
 /*---------PAGINA BENCHMARK---------*/
@@ -135,10 +129,9 @@ ul {
 #progress-circle {
   /*cx: 75;
   /*  sono attributi specifici di SVG (Scalable Vector Graphics) e non proprietà CSS standard. Questi attributi sono usati per definire la posizione e il raggio di un cerchio SVG. */
-  /*cy: 75;
+/*cy: 75;
   r: 70;*/
-  /*stroke-width: 10;} /*dimensione cerchio blu*/
-
+/*stroke-width: 10;} /*dimensione cerchio blu*/
 
 #timer-background {
   stroke-dasharray: 440; /*background della linea, parte da inizio cerchio*/
@@ -192,7 +185,7 @@ ul {
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
-  min-height: 35vh;  
+  min-height: 35vh;
 }
 
 #answerList li {
@@ -259,11 +252,7 @@ ul {
   padding: 5px 10px;
 }*/
 
-
-
 /*------BOTTONE FINALE-------*/
-
-
 
 /*----------PAGINA 3-------------- */
 
@@ -286,13 +275,13 @@ ul {
 }
 
 /* PROVA GARFICO A DONUT*/
-.chartPosition{
+.chartPosition {
   position: relative;
 }
-#innerChart{
- max-width: 13rem;
+#innerChart {
+  max-width: 13rem;
   position: absolute;
-  bottom: 170px;   /* MISURE DA VERIFICARE*/
+  bottom: 170px; /* MISURE DA VERIFICARE*/
   left: 150px;
 }
 
@@ -316,10 +305,10 @@ ul {
 .boxTwo {
   background-color: transparent;
   filter: drop-shadow(0 0 3px #0a113b);
-  border: 2px solid #0a113b;      /* METTE HIDDEN QUANDO FINITO*/
+  border: 2px solid #0a113b; /* METTE HIDDEN QUANDO FINITO*/
   width: 15rem;
   height: 10rem;
- padding: 2rem 1rem;
+  padding: 2rem 1rem;
   text-align: left;
   margin-top: 4rem;
 }
@@ -339,13 +328,13 @@ ul {
 .boxTwo p {
   word-spacing: 0.3rem;
 }
-.boxOne p span:first-child{
+.boxOne p span:first-child {
   color: #00ffff;
   font-size: 20px;
 }
 
 .boxOne p span:last-child,
-.boxTwo p span{
+.boxTwo p span {
   color: #d20094;
   font-size: 20px;
 }
@@ -370,11 +359,10 @@ ul {
 }
 
 #btnRateUs:hover {
-  background-color: #00ffff;        /*STESSO STILE DEI BOTTONI QUANDO*/ 
+  background-color: #00ffff; /*STESSO STILE DEI BOTTONI QUANDO*/
   border-color: #00ffff;
   color: #0a113b;
   filter: drop-shadow(0 0 8px black);
-
 }
 
 .mainResultPage {
@@ -393,7 +381,7 @@ ul {
 
 #titleFeedbackH2 {
   color: white;
-	font-family: outfit;
+  font-family: outfit;
   position: relative;
   display: inline-block;
   padding-bottom: 2rem;
@@ -411,7 +399,7 @@ ul {
 
 #description {
   padding-top: 25px;
-	margin-top: -35px;
+  margin-top: -35px;
   font-size: 32px;
   font-weight: normal;
   margin-bottom: 3rem;
@@ -422,92 +410,94 @@ ul {
   text-align: center;
 }
 
-.ratingStars{
+.ratingStars {
   user-select: none;
   text-align: center;
-
 }
 
-
-.star{
+.star {
   font-size: 3rem;
-  color: #00ffff;
+  /* color: #00ffff; */
   background-color: unset;
   border: none;
   padding: 1rem;
   filter: drop-shadow(0 0 3px #00ffff);
 }
-
 
 /*---RATING STARS-----*/
 
-.ratingStars{
+.ratingStars {
   user-select: none;
-
 }
 
 .star{
   font-size: 3rem;
-  color: #00ffff;
-  background-color: unset;
-  border: none;
   padding: 1rem;
-  filter: drop-shadow(0 0 3px #00ffff);
+  display: hidden;
+}
+/* .star.active{
+  display: hidden;
+} */
+
+.stella {
+  fill: rgba(46, 46, 46, 0.273);
+  stroke: rgba(46, 46, 46, 0.273);
+  stroke-width: 2;
+  cursor: pointer;
 }
 
-.star:hover{
-  cursor: pointer;
-
+.stella.active{
+  fill: #00ffff;
+  stroke: #00ffff;
+  stroke-width: 2;
 }
 
 #reviewDescription {
   font-size: 22px;
-	text-align: center;
-	margin-top: 90px;
-	margin-bottom: 20px;
-	color: white;
-  }
-  
-  #inputFeedback {
-	width: 100%;
-	max-width: calc(100vmin + 60vmin);
-	padding: 10px;
+  text-align: center;
+  margin-top: 90px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+#inputFeedback {
+  width: 100%;
+  max-width: calc(100vmin + 60vmin);
+  padding: 10px;
   padding-top: 70px;
-	font-size: 16px;
-	border: none;
-	border-bottom: 2px solid #800080;
-	background-color: transparent;
-	color: white;
-	outline: none;
-	box-sizing: border-box;
-	margin: 0 auto;
-	display: block;
-  }
-  
-  #inputFeedback::placeholder {
-	color: rgba(255, 255, 255, 0.5);
-	text-align: left;
-  }
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid #800080;
+  background-color: transparent;
+  color: white;
+  outline: none;
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: block;
+}
 
-  #buttonDiv{
-    padding-top: 30px;
-  }
+#inputFeedback::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  text-align: left;
+}
 
-  #feedbackButton {
-	padding: 1rem 3rem ;
-	background-color: #00ffff;
-	display: block;
-	margin: 30px auto;
-	border: none;
-	cursor: pointer;
-	font-size: 16px;
-	font-weight: bold;
-	color: #0a113b;
-	filter: drop-shadow(0 0 8px #00ffff);
+#buttonDiv {
+  padding-top: 30px;
+}
 
-	
-  }
+#feedbackButton {
+  padding: 1rem 3rem;
+  background-color: #00ffff;
+  display: block;
+  margin: 30px auto;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  color: #0a113b;
+  filter: drop-shadow(0 0 8px #00ffff);
+}
 
-  #feedbackButton:hover {
-	background-color: #00cccc;
-  }
+#feedbackButton:hover {
+  background-color: #00cccc;
+}
