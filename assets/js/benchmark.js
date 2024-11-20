@@ -110,7 +110,11 @@ let timerIntervalFunction;
 const arrayCorrectAnswers = [];
 const arraySelectedAnswers = [];
 
-document.addEventListener("load", init());
+//const arrayDatas = JSON.stringify(questions);     //array questions trasformato in stringa e portato nel local storage per essere usato nella pagina results.html
+//localStorage.setItem("arrayDatas", arrayDatas);
+
+
+document.addEventListener("load", init());    //LOAD INIT 
 
 function init() {
 
@@ -125,8 +129,8 @@ function init() {
 //AGGIUNGERE EVENTLISTNER CHE SALVA LA VALUE DELLA RISPOSTA CLICKATA SE CORRETTA NEL LOCAL STORAGE
 function saveDatas() {
   arrayCorrectAnswers.push(questions[questionCounter - 1].correct_answer);
-  let correctString = JSON.stringify(arrayCorrectAnswers);
-  localStorage.setItem("Correct", correctString);
+  // let correctString = JSON.stringify(arrayCorrectAnswers);         
+  // localStorage.setItem("Correct", correctString);
   //al click del bottone prendi il value della risposta che è stata portata
 }
 
@@ -143,7 +147,9 @@ btnBenchmark.addEventListener("click", function () {          //Event listner pe
   }
 
   if (questionCounter === questions.length) {
-    //SALVA LE RISPOSTE CORRETTE DENTRO UN ARRAY JSON vedi(https://www.geeksforgeeks.org/how-to-store-an-array-in-localstorage/)
+    //SALVA LE RISPOSTE CORRETTE E LE RISPOSTE SELEZIONATE DENTRO DUE ARRAY ARRAY JSON vedi(https://www.geeksforgeeks.org/how-to-store-an-array-in-localstorage/)
+    let correctString = JSON.stringify(arrayCorrectAnswers);        
+    localStorage.setItem("Correct", correctString);
     let selectedString = JSON.stringify(arraySelectedAnswers);
     localStorage.setItem("Selected", selectedString);
     window.location.href = "../../results.html";
@@ -198,6 +204,8 @@ function setTimer() {
       init();
     }, 46000);
   } else {
+    let correctString = JSON.stringify(arrayCorrectAnswers);
+    localStorage.setItem("Correct", correctString);
     let selectedString = JSON.stringify(arraySelectedAnswers);
     localStorage.setItem("Selected", selectedString);
     window.location.href = "../../results.html";

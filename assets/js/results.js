@@ -13,11 +13,16 @@ function init(){
   new Chart(answerChart, {
     type: 'doughnut',
     data: {
-      labels: ['Red', 'Blue'],
+      labels: ['Correct', 'Wrong'],
       datasets: [{
-        label: '# of Votes',
-        data: [countCorrect, 10-countCorrect], 
-        borderWidth: 1
+        label: 'Answers',
+        data: [countCorrect, arraySelectedAnswers.length-countCorrect], 
+        borderWidth: 0,
+        cutout: 150, 
+        backgroundColor:[
+          "#00ffff",
+          "#d20094"
+        ]
       }]
     },
   });
