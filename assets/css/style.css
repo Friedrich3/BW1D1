@@ -286,20 +286,14 @@ ul {
 }
 
 /* PROVA GARFICO A DONUT*/
-
-
-
 .chartPosition{
-  max-width: fit-content;
+  position: relative;
 }
-
-.chart::before {
-  content: '';
-  width: 350px;
-  height: 350px;
-  border-radius: 50%;
-  background-color: #0a113b;
-
+#innerChart{
+ max-width: 13rem;
+  position: absolute;
+  bottom: 170px;   /* MISURE DA VERIFICARE*/
+  left: 150px;
 }
 
 /*BOX RIGHT AND WRONG*/
@@ -307,8 +301,9 @@ ul {
 .boxes {
   max-width: fit-content;
   line-height: 40px;
-  margin-left: 15rem;
+  margin-left: 5rem;
   text-align: center;
+  min-height: 400px;
 }
 
 .boxes,
@@ -321,18 +316,22 @@ ul {
 .boxTwo {
   background-color: transparent;
   filter: drop-shadow(0 0 3px #0a113b);
-  border: 2px solid #0a113b;
-  padding: 2rem 5rem;
+  border: 2px solid #0a113b;      /* METTE HIDDEN QUANDO FINITO*/
+  width: 15rem;
+  height: 10rem;
+ padding: 2rem 1rem;
+  text-align: left;
+  margin-top: 4rem;
 }
 
 .boxOne {
-  margin-bottom: 2rem;
+  -margin-bottom: 2rem;
 }
 
 .boxOne h4,
 .boxTwo h4 {
   font-size: 40px;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.1rem;
   font-weight: normal;
 }
 
@@ -340,9 +339,13 @@ ul {
 .boxTwo p {
   word-spacing: 0.3rem;
 }
+.boxOne p span:first-child{
+  color: #00ffff;
+  font-size: 20px;
+}
 
-.boxOne p span,
-.boxTwo p span {
+.boxOne p span:last-child,
+.boxTwo p span{
   color: #d20094;
   font-size: 20px;
 }
@@ -367,7 +370,8 @@ ul {
 }
 
 #btnRateUs:hover {
-  background-color: white;
+  background-color: #00ffff;        /*STESSO STILE DEI BOTTONI QUANDO*/ 
+  border-color: #00ffff;
   color: #0a113b;
   filter: drop-shadow(0 0 8px black);
 

@@ -29,36 +29,34 @@
             </div>
             <section>
                 <div class="chartPosition" >
-                    <canvas id="chart" style="height: 400px; width: 400px;">
+                    <canvas id="chart" style="height:500px; width: 500px;">
+                       
 
                     </canvas>
+                    <div id="innerChart">
+                        <h4 id="examTitle">aaa</h4><br/>
+                        <p id="parExam">
+                        aaaa
+                        </p>
+                    </div>
                 </div>
                 <div class="boxes">
                     <div class="boxOne">
                         <h4>Correct</h4>
                         <p class="percentageRight bold"></p>
-                        <p><span>3</span> out of <span> 10</span></p>
+                        <p id="correctAnswers"><!--<span>3</span> out of <span class="totalQuestions">10</span>--></p>
                     </div>
                     <div class="boxTwo">
                         <h4>Wrong</h4>
                         <p class="percentageWrong bold"></p>
-                        <p><span>7</span> out of <span> 10</span></p>
+                         <p id="wrongAnswers"><!--<span>7</span> out of <span class="totalQuestions">10</span>--></p> 
                     </div>
                 </div>
             </section>
             <section>
-                <button type="submit" id="btnRateUs">RATE US!</button>
+                <button type="submit" id="btnRateUs" onclick="rateUs()">RATE US!</button>
             </section>
     </main>
-
-
-    </div>
-
-
-
-
-
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="assets/js/results.js"></script>

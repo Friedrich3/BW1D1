@@ -1,6 +1,9 @@
 const answerChart = document.getElementById("chart");
 const percentageWrong = document.querySelector(".percentageWrong");
-const percentageRight = document.querySelector(".percentageRight")
+const percentageRight = document.querySelector(".percentageRight");
+const correctAnswers = document.getElementById("correctAnswers");
+const wrongAnswers = document.getElementById("wrongAnswers");
+const btnRateUs =  document.getElementById("btnRateUs");
 const arrayCorrectAnswer = [];
 let arraySelectedAnswers = []; //non funziona con il const
 let countCorrect = 0;  //contatore per tenere conto delle risposte corrette
@@ -10,18 +13,27 @@ function init(){
   getAnswer();
   compareAnswer();
   percentages();
+  quantifyAnswers();
+  examResult();
   new Chart(answerChart, {
     type: 'doughnut',
     data: {
-      labels: ['Red', 'Blue'],
+      labels: ['Correct', 'Wrong'],
       datasets: [{
-        label: '# of Votes',
-        data: [countCorrect, 10-countCorrect], 
-        borderWidth: 1
+        label: 'Answers',
+        data: [countCorrect, arraySelectedAnswers.length-countCorrect], 
+        borderWidth: 0,
+        cutout:150,
+        rotation: 30,
+        backgroundColor:[
+          "#00ffff",
+          "#d20094"
+        ],
+        hoverOffset:2
       }]
     },
   });
-}
+};
 
 /*funzione per ricavare gli array dal local storage*/
 function getAnswer(){
@@ -44,6 +56,33 @@ function compareAnswer(){
 }
 
 function percentages(){
-  percentageRight.textContent = `${countCorrect*10}%`;
-  percentageWrong.textContent = `${100-countCorrect*10}%`;
+  percentageRight.textContent = `${(countCorrect/arraySelectedAnswers.length)*100}%`;                  //Corretto calcolo percetuale per flessibilità con diverse domande
+  percentageWrong.textContent = `${100-((countCorrect/arraySelectedAnswers.length)*100)}%`;  
+}
+//funzione per stampare la quantità di risposte corrette e sbagliate
+function quantifyAnswers(){
+  correctAnswers.innerHTML = `<span >${countCorrect}</span> out of <span class="totalQuestions">${arraySelectedAnswers.length}</span>`;
+  wrongAnswers.innerHTML = `<span >${arraySelectedAnswers.length - countCorrect}</span> out of <span class="totalQuestions">${arraySelectedAnswers.length}</span>`;
+}
+
+function examResult(){
+  const examTitle = document.getElementById("examTitle");
+  const parExam = document.getElementById("parExam");
+if((countCorrect/arraySelectedAnswers.length)*100 >= 60){
+  examTitle.innerHTML = "Congratulations!<br><span>You passed the exam.</span>";
+  const colorExamTitle = document.querySelector("#examTitle span");
+  colorExamTitle.style.color = "#00ffff";
+  parExam.innerHTML = "We'll send you the certificate in few minutes.<br/>Check your email(including promotion/spam folder)";
+}else{
+  examTitle.innerHTML = "We're sorry!<br><span>You failed the exam.</span>";
+  const colorExamTitle = document.querySelector("#examTitle span");
+  colorExamTitle.style.color = "#d20094";
+  parExam.innerHTML = "Don't worry! You can try again and get your certificate!";
+};
+};
+
+
+
+function rateUs(){
+  window.location.href = "../../feedback.html";
 }
