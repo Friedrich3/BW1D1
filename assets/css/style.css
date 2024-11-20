@@ -383,6 +383,62 @@ ul {
 
 /*--------PAGINA 4--------*/
 
+.titleFeedback {
+  text-align: center;
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  margin-top: -50px;
+}
+
+#titleFeedbackH2 {
+  color: white;
+	font-family: outfit;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2rem;
+}
+
+#titleFeedbackH2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #d20094;
+}
+
+#description {
+  padding-top: 25px;
+	margin-top: -35px;
+  font-size: 32px;
+  font-weight: normal;
+  margin-bottom: 3rem;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.ratingStars{
+  user-select: none;
+  text-align: center;
+
+}
+
+
+.star{
+  font-size: 3rem;
+  color: #00ffff;
+  background-color: unset;
+  border: none;
+  padding: 1rem;
+  filter: drop-shadow(0 0 3px #00ffff);
+}
+
+
 /*---RATING STARS-----*/
 
 .ratingStars{
@@ -403,3 +459,55 @@ ul {
   cursor: pointer;
 
 }
+
+#reviewDescription {
+  font-size: 22px;
+	text-align: center;
+	margin-top: 90px;
+	margin-bottom: 20px;
+	color: white;
+  }
+  
+  #inputFeedback {
+	width: 100%;
+	max-width: calc(100vmin + 60vmin);
+	padding: 10px;
+  padding-top: 70px;
+	font-size: 16px;
+	border: none;
+	border-bottom: 2px solid #800080;
+	background-color: transparent;
+	color: white;
+	outline: none;
+	box-sizing: border-box;
+	margin: 0 auto;
+	display: block;
+  }
+  
+  #inputFeedback::placeholder {
+	color: rgba(255, 255, 255, 0.5);
+	text-align: left;
+  }
+
+  #buttonDiv{
+    padding-top: 30px;
+  }
+
+  #feedbackButton {
+	padding: 1rem 3rem ;
+	background-color: #00ffff;
+	display: block;
+	margin: 30px auto;
+	border: none;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: bold;
+	color: #0a113b;
+	filter: drop-shadow(0 0 8px #00ffff);
+
+	
+  }
+
+  #feedbackButton:hover {
+	background-color: #00cccc;
+  }
