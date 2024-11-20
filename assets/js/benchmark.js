@@ -148,7 +148,7 @@ btnBenchmark.addEventListener("click", function () {          //Event listner pe
 
   if (questionCounter === questions.length) {
     //SALVA LE RISPOSTE CORRETTE E LE RISPOSTE SELEZIONATE DENTRO DUE ARRAY ARRAY JSON vedi(https://www.geeksforgeeks.org/how-to-store-an-array-in-localstorage/)
-    let correctString = JSON.stringify(arrayCorrectAnswers);        
+    let correctString = JSON.stringify(arrayCorrectAnswers);        //AGGIUNTO PASSAGGIO IN LOCAL STORAGE DI CORRECT 
     localStorage.setItem("Correct", correctString);
     let selectedString = JSON.stringify(arraySelectedAnswers);
     localStorage.setItem("Selected", selectedString);
@@ -204,7 +204,7 @@ function setTimer() {
       init();
     }, 46000);
   } else {
-    let correctString = JSON.stringify(arrayCorrectAnswers);
+    let correctString = JSON.stringify(arrayCorrectAnswers);                       //AGGIUNTO PASSAGGIO IN LOCAL STORAGE DI CORRECT 
     localStorage.setItem("Correct", correctString);
     let selectedString = JSON.stringify(arraySelectedAnswers);
     localStorage.setItem("Selected", selectedString);
