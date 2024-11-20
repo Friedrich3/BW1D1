@@ -4,7 +4,6 @@ const percentageRight = document.querySelector(".percentageRight")
 const arrayCorrectAnswer = [];
 let arraySelectedAnswers = []; //non funziona con il const
 let countCorrect = 0;  //contatore per tenere conto delle risposte corrette
-
 document.addEventListener("load", init());
 
 function init(){
@@ -48,6 +47,3 @@ function percentages(){
   percentageRight.textContent = `${countCorrect*10}%`;
   percentageWrong.textContent = `${100-countCorrect*10}%`;
 }
-
-
-
