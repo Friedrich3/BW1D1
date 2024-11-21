@@ -18,3 +18,23 @@ allStars.forEach((star, i) => {
         });
     }
 })
+
+
+document.addEventListener('load', () => {
+    const stars = document.querySelectorAll('.ratingTable .star'); 
+
+    const updateStars = (index, className) => { 
+        stars.forEach((s, i) => {
+            s.classList.toggle(className, i <= index);
+        });
+    };
+
+    stars.forEach((star, index) => {
+        star.addEventListener('mouseover', () => updateStars(index, 'hover'));
+        star.addEventListener('mouseout', () => updateStars(-1, 'hover'));
+        star.addEventListener('click', () => {
+            updateStars(index, 'selected');
+            updateStars(index, 'hover');
+        });
+    });
+});
