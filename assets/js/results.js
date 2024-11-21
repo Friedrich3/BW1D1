@@ -3,13 +3,27 @@ const percentageWrong = document.querySelector(".percentageWrong");
 const percentageRight = document.querySelector(".percentageRight");
 const correctAnswers = document.getElementById("correctAnswers");
 const wrongAnswers = document.getElementById("wrongAnswers");
-const btnRateUs =  document.getElementById("btnRateUs");
+const btnRateUs = document.getElementById("btnRateUs");
 const arrayCorrectAnswer = [];
 let arraySelectedAnswers = []; //non funziona con il const
 let countCorrect = 0;  //contatore per tenere conto delle risposte corrette
+
+
+
+window.onmouseover = (event) => {
+  if (event.target.tagName !== "BUTTON") {
+    window.addEventListener("beforeunload", unloadController);
+  } else {
+    window.removeEventListener("beforeunload", unloadController)
+  }
+};
+function unloadController(e) {
+  e.preventDefault();
+
+};
 document.addEventListener("load", init());
 
-function init(){
+function init() {
   getAnswer();
   compareAnswer();
   percentages();
@@ -21,22 +35,22 @@ function init(){
       labels: ['Correct', 'Wrong'],
       datasets: [{
         label: 'Answers',
-        data: [countCorrect, arraySelectedAnswers.length-countCorrect], 
+        data: [countCorrect, arraySelectedAnswers.length - countCorrect],
         borderWidth: 0,
-        cutout:150,
+        cutout: 150,
         rotation: 30,
-        backgroundColor:[
+        backgroundColor: [
           "#00ffff",
           "#d20094"
         ],
-        hoverOffset:2
+        hoverOffset: 2
       }]
     },
   });
 };
 
 /*funzione per ricavare gli array dal local storage*/
-function getAnswer(){
+function getAnswer() {
   const correctAnswer = localStorage.getItem("Correct");
   arrayCorrectAnswers = JSON.parse(correctAnswer);
   //console.log(arrayCorrectAnswers);
@@ -47,42 +61,42 @@ function getAnswer(){
 }
 
 /*funzione per comparare le risposte*/
-function compareAnswer(){
-  for(let i=0; i<arraySelectedAnswers.length; i++){
-    if(arrayCorrectAnswers[i]===arraySelectedAnswers[i]){
+function compareAnswer() {
+  for (let i = 0; i < arraySelectedAnswers.length; i++) {
+    if (arrayCorrectAnswers[i] === arraySelectedAnswers[i]) {
       countCorrect++;
     }
   }
 }
 
-function percentages(){
-  percentageRight.textContent = `${(countCorrect/arraySelectedAnswers.length)*100}%`;                  //Corretto calcolo percetuale per flessibilità con diverse domande
-  percentageWrong.textContent = `${100-((countCorrect/arraySelectedAnswers.length)*100)}%`;  
+function percentages() {
+  percentageRight.textContent = `${(countCorrect / arraySelectedAnswers.length) * 100}%`;                  //Corretto calcolo percetuale per flessibilità con diverse domande
+  percentageWrong.textContent = `${100 - ((countCorrect / arraySelectedAnswers.length) * 100)}%`;
 }
 //funzione per stampare la quantità di risposte corrette e sbagliate
-function quantifyAnswers(){
+function quantifyAnswers() {
   correctAnswers.innerHTML = `<span >${countCorrect}</span> out of <span class="totalQuestions">${arraySelectedAnswers.length}</span>`;
   wrongAnswers.innerHTML = `<span >${arraySelectedAnswers.length - countCorrect}</span> out of <span class="totalQuestions">${arraySelectedAnswers.length}</span>`;
 }
 
-function examResult(){
+function examResult() {
   const examTitle = document.getElementById("examTitle");
   const parExam = document.getElementById("parExam");
-if((countCorrect/arraySelectedAnswers.length)*100 >= 60){
-  examTitle.innerHTML = "Congratulations!<br><span>You passed the exam.</span>";
-  const colorExamTitle = document.querySelector("#examTitle span");
-  colorExamTitle.style.color = "#00ffff";
-  parExam.innerHTML = "We'll send you the certificate in few minutes.<br/>Check your email(including promotion/spam folder)";
-}else{
-  examTitle.innerHTML = "We're sorry!<br><span>You failed the exam.</span>";
-  const colorExamTitle = document.querySelector("#examTitle span");
-  colorExamTitle.style.color = "#d20094";
-  parExam.innerHTML = "Don't worry! You can try again and get your certificate!";
+  if ((countCorrect / arraySelectedAnswers.length) * 100 >= 60) {
+    examTitle.innerHTML = "Congratulations!<br><span>You passed the exam.</span>";
+    const colorExamTitle = document.querySelector("#examTitle span");
+    colorExamTitle.style.color = "#00ffff";
+    parExam.innerHTML = "We'll send you the certificate in few minutes.<br/>Check your email(including promotion/spam folder)";
+  } else {
+    examTitle.innerHTML = "We're sorry!<br><span>You failed the exam.</span>";
+    const colorExamTitle = document.querySelector("#examTitle span");
+    colorExamTitle.style.color = "#d20094";
+    parExam.innerHTML = "Don't worry! You can try again and get your certificate!";
+  };
 };
-};
 
 
 
-function rateUs(){
+function rateUs() {
   window.location.href = "../../feedback.html";
 }

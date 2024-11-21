@@ -113,6 +113,7 @@ const arraySelectedAnswers = [];
 //const arrayDatas = JSON.stringify(questions);     //array questions trasformato in stringa e portato nel local storage per essere usato nella pagina results.html
 //localStorage.setItem("arrayDatas", arrayDatas);
 
+localStorage.clear();                 //Svuota la localStorage prima di rifare l'esame
 
 document.addEventListener("load", init());    //LOAD INIT 
 
