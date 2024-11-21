@@ -332,14 +332,13 @@ input[type="checkbox"]:checked::before {
   max-width: fit-content;
   line-height: 40px;
   margin-left: 5rem;
-  text-align: center;
   min-height: 400px;
 }
 
 .boxes,
 .chartPosition {
   display: inline-block;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 .boxOne,
@@ -349,10 +348,9 @@ input[type="checkbox"]:checked::before {
   border: 2px solid #0a113b;
   /* METTE HIDDEN QUANDO FINITO*/
   width: 15rem;
-  height: 10rem;
   padding: 2rem 1rem;
-  text-align: left;
-  margin-top: 4rem;
+  text-align: center;
+  margin-top: 2rem;
 }
 
 /*.boxOne {
@@ -640,7 +638,8 @@ input[type="checkbox"]:checked::before {
   float: left;
 }
 
-#btnResult:hover {
+#btnResult:hover,
+#btnBack:hover {
   background-color: #00ffff;
   border-color: #00ffff;
   color: #0a113b;
