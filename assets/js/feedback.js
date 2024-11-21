@@ -1,9 +1,10 @@
 const inputFeedback = document.getElementById("inputFeedback");
+const btnFeedback = document.getElementById("feedbackButton");
+const stars = document.querySelectorAll('.ratingStars .star'); 
 let isFocus = false;
 
-
 document.addEventListener('DOMContentLoaded', () => {
-    const stars = document.querySelectorAll('.ratingStars .star'); 
+
     inputFeedback.addEventListener("mouseover", function(){
         isFocus = true;
     });
@@ -37,6 +38,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateStars(-1, 'hover');
             }       
         });
-        
+       
     });
 });
+
+
+function submitForm(){
+    if(stars[0].classList.contains("selected")){
+    localStorage.setItem("votoForm" , countStar());
+    localStorage.setItem("commentForm", inputFeedback.value);
+    window.location.href = "../../thanks.html"
+}
+}
+function countStar(){
+    let counterStar = 0;
+    stars.forEach (element =>{
+        if(element.classList.contains("selected")){
+            counterStar += 1;
+        }    
+    });
+    return counterStar;
+};
