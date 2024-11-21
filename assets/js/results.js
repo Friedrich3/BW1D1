@@ -39,11 +39,11 @@ function init(){
 function getAnswer(){
   const correctAnswer = localStorage.getItem("Correct");
   arrayCorrectAnswers = JSON.parse(correctAnswer);
-  console.log(arrayCorrectAnswers);
+  //console.log(arrayCorrectAnswers);
 
   const selectedAnswer = localStorage.getItem("Selected");
   arraySelectedAnswers = JSON.parse(selectedAnswer);
-  console.log(arraySelectedAnswers);
+  //console.log(arraySelectedAnswers);
 }
 
 /*funzione per comparare le risposte*/
