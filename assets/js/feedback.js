@@ -51,7 +51,7 @@ function submitForm(){                                                          
     localStorage.setItem("commentForm", inputFeedback.value);
     window.location.href = "../../thanks.html";                         
 }else{
-    window.location.href = "../../welcome\\.html";
+    window.location.href = "../../welcome.html";
 }
 }
 function countStar(){                                                                   //funzione per ricavare il "voto ricevuto"
