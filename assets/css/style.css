@@ -459,13 +459,13 @@ input[type="checkbox"]:checked::before {
   background-color: unset;
   border: none;
   padding: 1rem;
-  filter: drop-shadow(0 0 3px #00ffff);
+  filter: drop-shadow(0 0 3px #727272);
 }
 
 
 /*---RATING STARS-----*/
 
-.ratingStars{
+/* .ratingStars{
   user-select: none;
 
 }
@@ -482,12 +482,12 @@ input[type="checkbox"]:checked::before {
 .star:hover{
   cursor: pointer;
 
-}
-
-/*
+} */
 
 
-.ratingTable {
+
+
+.ratingStars {
   user-select: none;
   text-align: center;
   margin-bottom: 2rem;
@@ -505,7 +505,7 @@ input[type="checkbox"]:checked::before {
 }
 
 .star::before {
-  content: '\2605'; codice stella piena
+   content: '\2605'; /*codice stella piena */
   position: absolute;
   top: 0.5rem;
   left: 0.5rem;
@@ -528,7 +528,7 @@ input[type="checkbox"]:checked::before {
   outline: none;
 }
 
-*/
+
 
 #reviewDescription {
   font-size: 22px;
