@@ -4,6 +4,8 @@ const percentageRight = document.querySelector(".percentageRight");
 const correctAnswers = document.getElementById("correctAnswers");
 const wrongAnswers = document.getElementById("wrongAnswers");
 const btnRateUs = document.getElementById("btnRateUs");
+const questionList = document.getElementById("questionList");
+let arrayQuestions = [];        //non funziona con il const
 const arrayCorrectAnswer = [];
 let arraySelectedAnswers = []; //non funziona con il const
 let countCorrect = 0;  //contatore per tenere conto delle risposte corrette
@@ -29,6 +31,7 @@ function init() {
   percentages();
   quantifyAnswers();
   examResult();
+  answerList();
   new Chart(answerChart, {
     type: 'doughnut',
     data: {
@@ -58,6 +61,10 @@ function getAnswer() {
   const selectedAnswer = localStorage.getItem("Selected");
   arraySelectedAnswers = JSON.parse(selectedAnswer);
   //console.log(arraySelectedAnswers);
+
+  const questions = localStorage.getItem("arrayDatas");
+  arrayQuestions = JSON.parse(questions);
+  //console.log(arrayQuestions);
 }
 
 /*funzione per comparare le risposte*/
@@ -95,8 +102,31 @@ function examResult() {
   };
 };
 
-
-
 function rateUs() {
   window.location.href = "../../feedback.html";
+}
+
+//TUTTO IL CODICE CHE GESTISCE LA CREAZIONE DELLA LISTA
+
+function answerList(){
+  for(let i = 0; i < arrayQuestions.length; i++){
+    const newLi = document.createElement("li");
+    const newQuestion = document.createElement("h4");
+    const newCorrAnswer = document.createElement("p");
+    const newWrongAnswer = document.createElement("p");
+
+    newQuestion.innerText = `${i+1}) ${arrayQuestions[i]}`;
+    newCorrAnswer.innerHTML = `Risposta Corretta: ${arrayCorrectAnswers[i]} &#9989;`;
+    newWrongAnswer.innerHTML = `La tua Risposta: ${arraySelectedAnswers[i]} &#10060;`;
+
+    questionList.appendChild(newLi);
+    newLi.appendChild(newQuestion);
+    if(arrayCorrectAnswers[i] == arraySelectedAnswers[i]){
+      newLi.appendChild(newCorrAnswer);
+    }else{
+      newLi.appendChild(newCorrAnswer);
+      newLi.appendChild(newWrongAnswer);
+    }
+
+  }
 }

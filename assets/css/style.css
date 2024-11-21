@@ -669,3 +669,22 @@ footer a:hover{
 }
 
 
+
+
+
+
+/* PAGINA 3 DOMANDE PROVA*/
+
+#questionList li {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid white;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  width: 100%;
+  margin: 1rem 0;
+  list-style-type: none;
+  text-align: left;
+}
+#questionList li:hover{
+background-color: rgba(255, 255, 255, 0.2);
+}
