@@ -266,9 +266,26 @@ input[type="checkbox"]:checked::before {
   word-spacing: 1px;
 }
 
+
 #benchmarkButton {
+  background: transparent;
+  filter: drop-shadow(0 0 8px black);
+  color: rgba(206, 206, 206, 0.658);
+  font-weight: bold;
+  font-size: 25px;
+  border: 3px solid rgba(206, 206, 206, 0.658);
+  cursor: pointer;
   margin: 0 12% 0 0;
   float: right;
+}
+
+#benchmarkButton.active {
+
+background-color: #00ffff;
+color: #0a113b;
+border: 2px #00ffff;
+filter: drop-shadow(0 0 5px #00ffff);
+
 }
 
 #questionNumber,
@@ -350,6 +367,7 @@ input[type="checkbox"]:checked::before {
   padding: 2rem 1rem;
   text-align: center;
   margin-top: 2rem;
+  transition: all 0.2s ease;
 }
 
 /*.boxOne {
@@ -377,6 +395,12 @@ input[type="checkbox"]:checked::before {
 .boxTwo p span {
   color: #d20094;
   font-size: 20px;
+}
+
+.boxOne:hover, .boxTwo:hover {
+  background-color: rgba(255, 255, 255, 0.137);
+  transform: scale(1.1);
+  transition: all 0.2s
 }
 
 .percentageWrong,
