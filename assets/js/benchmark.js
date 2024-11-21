@@ -113,7 +113,19 @@ const arraySelectedAnswers = [];
 //const arrayDatas = JSON.stringify(questions);     //array questions trasformato in stringa e portato nel local storage per essere usato nella pagina results.html
 //localStorage.setItem("arrayDatas", arrayDatas);
 
-localStorage.clear();                 //Svuota la localStorage prima di rifare l'esame
+localStorage.clear();           //Svuota la localStorage prima di rifare l'esame
+
+
+window.onmouseover = (event) => {
+  if (event.target.tagName !== "BUTTON") {
+    window.addEventListener("beforeunload", unloadController);
+  } else {
+    window.removeEventListener("beforeunload", unloadController)
+  }
+};
+function unloadController(e) {
+  e.preventDefault();
+};
 
 document.addEventListener("load", init());    //LOAD INIT 
 

@@ -19,8 +19,8 @@ window.onmouseover = (event) => {
 };
 function unloadController(e) {
   e.preventDefault();
-
 };
+
 document.addEventListener("load", init());
 
 function init() {
