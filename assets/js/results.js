@@ -116,8 +116,8 @@ function answerList(){
     const newWrongAnswer = document.createElement("p");
 
     newQuestion.innerText = `${i+1}) ${arrayQuestions[i]}`;
-    newCorrAnswer.innerHTML = `Risposta Corretta: ${arrayCorrectAnswers[i]} &#9989;`;
-    newWrongAnswer.innerHTML = `La tua Risposta: ${arraySelectedAnswers[i]} &#10060;`;
+    newCorrAnswer.innerHTML = `Correct Answer: ${arrayCorrectAnswers[i]} &#9989;`;
+    newWrongAnswer.innerHTML = `Your Answer: ${arraySelectedAnswers[i]} &#10060;`;
 
     questionList.appendChild(newLi);
     newLi.appendChild(newQuestion);
@@ -129,4 +129,8 @@ function answerList(){
     }
 
   }
+}
+
+function returnHome(){
+  window.location.href = "../../welcome.html";
 }
