@@ -151,7 +151,7 @@ btnBenchmark.addEventListener("click", function () {          //Event listner pe
     localStorage.setItem("Correct", correctString);
     let selectedString = JSON.stringify(arraySelectedAnswers);
     localStorage.setItem("Selected", selectedString);
-    window.location.href = "../../results.html";
+    window.location.replace("../../results.html");       //AGGIUNTO modo per non tornare indietro sulle domande
   } else {
     init();
   }
@@ -207,7 +207,7 @@ function setTimer() {
     localStorage.setItem("Correct", correctString);
     let selectedString = JSON.stringify(arraySelectedAnswers);
     localStorage.setItem("Selected", selectedString);
-    window.location.href = "../../results.html";
+    window.location.replace("../../results.html");
   }
 }
 
