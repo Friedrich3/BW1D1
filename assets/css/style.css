@@ -137,9 +137,8 @@ input[type="checkbox"]:checked::before {
 /* timer */
 #timer {
   position: absolute;
-  width: 150px;
-  height: 150px;
   margin-left: 5rem;
+  left: 70%;
 }
 
 #timer-circle {
@@ -466,7 +465,7 @@ input[type="checkbox"]:checked::before {
   background-color: unset;
   border: none;
   padding: 1rem;
-  filter: drop-shadow(0 0 3px #727272);
+  filter: drop-shadow(0 0 5px #d200937a);
 }
 
 
@@ -506,7 +505,7 @@ input[type="checkbox"]:checked::before {
   transition: all 0.2s;
   cursor: pointer;
   color: transparent;
-  background: linear-gradient(to bottom, #727272, #727272);
+  background: linear-gradient(to bottom, #800080, #800080);
   background-clip: text;
   position: relative;
 }

@@ -103,11 +103,11 @@ let timerInterval; // variabile per l'intervallo del timer
 const benchmarkTitle = document.getElementById("benchmarkTitle"); //INSERIRE ID TITOLO benchmark.html
 const answerList = document.getElementById("answerList"); //INSERIRE ID LIST  benchmark.html
 const btnBenchmark = document.getElementById("benchmarkButton"); //INSERIRE ID BOTTONE benchmark.html
-const checkBenchmark = document.querySelectorAll(".check"); //INSERIRE CLASSE CheckBOX creati con questionAnswer();
+//const checkBenchmark = document.querySelectorAll(".check");  //INSERIRE CLASSE CheckBOX creati con questionAnswer();
 
 let questionCounter = 0; //variabile globale per count questions array
 let timerIntervalFunction;
-const arrayCorrectAnswers = [];
+const arrayCorrectAnswers = [];       //per portare in localStorage le varie risposte
 const arraySelectedAnswers = [];
 
 //const arrayDatas = JSON.stringify(questions);     //array questions trasformato in stringa e portato nel local storage per essere usato nella pagina results.html
@@ -118,13 +118,12 @@ document.addEventListener("load", init());    //LOAD INIT
 
 function init() {
 
-  //l'ordine che seguirà il Flusso di codice: Visualizzazione Domanda/Riposta/e - Timer - QuestionCounter - Img(opzionale) - Eventlistner Risposta - EventListener Procedi -  Ripeti init per 2nd domanda fino a 10
+  //l'ordine che seguirà il Flusso di codice: Visualizzazione Domanda/Riposta/e - Timer - QuestionCounter - Img(opzionale) - Eventlistner Risposta - EventListener Procedi -  Ripeti init per 2nd domanda fino a fine delle domande
   resetList();
   setTimer();
   questionAnswer();
   saveDatas();
-
-
+  
 }
 //AGGIUNGERE EVENTLISTNER CHE SALVA LA VALUE DELLA RISPOSTA CLICKATA SE CORRETTA NEL LOCAL STORAGE
 function saveDatas() {
