@@ -30,8 +30,6 @@ header {
 }
 
 h1 {
-
-
   font-size: 60px;
   font-weight: 350;
   color: white;
@@ -40,6 +38,11 @@ h1 {
 
 .title {
   font-family: "Outfit", serif;
+}
+
+.title img{
+  width: 90px;
+  padding-left: 2rem;
 }
 
 .bold {
@@ -61,6 +64,10 @@ h2 {
 
 ul {
   margin-left: 2rem;
+}
+
+ul span{
+  font-size: 18px;
 }
 
 .formContent {
@@ -307,7 +314,6 @@ input[type="checkbox"]:checked::before {
   color: white;
   font-size: 60px;
   margin-bottom: 1rem;
-  -margin-top: 1rem;
 }
 
 .titleParagraph p {
