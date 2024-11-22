@@ -202,7 +202,7 @@ function setTimer() {
         arraySelectedAnswers.push("null");
       }
       init();
-    }, 45000);
+    }, 46000);
   } else {
     let correctString = JSON.stringify(arrayCorrectAnswers);                       //AGGIUNTO PASSAGGIO IN LOCAL STORAGE DI CORRECT 
     localStorage.setItem("Correct", correctString);
