@@ -346,10 +346,17 @@ input[type="checkbox"]:checked::before {
   filter: drop-shadow(0 0 3px #0a113b);
   border: 2px solid #0a113b;
   /* METTE HIDDEN QUANDO FINITO*/
-  width: 15rem;
-  padding: 2rem 1rem;
+  padding: 2rem 4rem;
   text-align: center;
   margin-top: 2rem;
+  transition: all 0.2s ease;
+}
+
+.boxOne:hover,
+.boxTwo:hover{
+  background-color: rgba(255, 255, 255, 0.137);
+  transform: scale(1.1);
+  transition: all 0.2s;
 }
 
 /*.boxOne {
