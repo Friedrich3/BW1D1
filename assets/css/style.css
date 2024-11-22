@@ -295,6 +295,9 @@ input[type="checkbox"]:checked::before {
 /*----------PAGINA 3-------------- */
 
 /*TITOLO + PARAGRAFO*/
+#resultsHeader{
+  margin-bottom: 0;
+}
 
 .titleParagraph {
   text-align: center;
@@ -304,12 +307,12 @@ input[type="checkbox"]:checked::before {
   color: white;
   font-size: 60px;
   margin-bottom: 1rem;
-  margin-top: 1rem;
+  -margin-top: 1rem;
 }
 
 .titleParagraph p {
   font-size: 32px;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 /* PROVA GARFICO A DONUT*/
@@ -346,8 +349,7 @@ input[type="checkbox"]:checked::before {
   filter: drop-shadow(0 0 3px #0a113b);
   border: 2px solid #0a113b;
   /* METTE HIDDEN QUANDO FINITO*/
-  width: 15rem;
-  padding: 2rem 1rem;
+  padding: 2rem 4rem;
   text-align: center;
   margin-top: 2rem;
 }
@@ -389,6 +391,7 @@ input[type="checkbox"]:checked::before {
 #btnRateUs {
   padding: 1rem 3rem;
   margin-top: 5rem;
+  margin-bottom: 3rem;
   background: transparent;
   filter: drop-shadow(0 0 8px black);
   color: white;
@@ -673,7 +676,10 @@ footer a:hover{
 
 
 
-/* PAGINA 3 DOMANDE PROVA*/
+/* PAGINA 3 LISTA DOMANDE*/
+#questionList{
+  margin-left: 0;
+}
 
 #questionList li {
   background-color: rgba(255, 255, 255, 0.1);
@@ -681,13 +687,23 @@ footer a:hover{
   border-radius: 8px;
   padding: 1rem 2rem;
   width: 100%;
-  margin: 1rem 0;
+  margin: 2rem 0;
   list-style-type: none;
   text-align: left;
 }
 #questionList li:hover{
 background-color: rgba(255, 255, 255, 0.2);
 }
+
+#questionList h4{
+  font-size: 30px;
+  margin-bottom: 1rem;
+}
+#questionList p {
+  font-size: 22px;
+  line-height: 2.5rem;
+}
+
 #backWelcome{
   padding: 1rem 2rem;
   margin-top: 1rem;
