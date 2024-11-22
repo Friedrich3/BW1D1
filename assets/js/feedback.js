@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         isFocus = false;
     });
     inputFeedback.addEventListener("blur", function(){
-        if(inputFeedback.value === ""){
+        if(inputFeedback.value === "" && isFocus === false){
             updateStars(-1, 'selected');
             updateStars(-1, 'hover');
         }

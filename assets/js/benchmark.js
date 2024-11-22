@@ -107,12 +107,23 @@ const btnBenchmark = document.getElementById("benchmarkButton"); //INSERIRE ID B
 
 let questionCounter = 0; //variabile globale per count questions array
 let timerIntervalFunction;
+const arrayQuestions = [];
 const arrayCorrectAnswers = [];       //per portare in localStorage le varie risposte
 const arraySelectedAnswers = [];
 
-//const arrayDatas = JSON.stringify(questions);     //array questions trasformato in stringa e portato nel local storage per essere usato nella pagina results.html
-//localStorage.setItem("arrayDatas", arrayDatas);
+localStorage.clear();           //Svuota la localStorage prima di rifare l'esame
 
+
+window.onmouseover = (event) => {
+  if (event.target.tagName !== "BUTTON") {
+    window.addEventListener("beforeunload", unloadController);
+  } else {
+    window.removeEventListener("beforeunload", unloadController)
+  }
+};
+function unloadController(e) {
+  e.preventDefault();
+};
 
 document.addEventListener("load", init());    //LOAD INIT 
 
@@ -127,10 +138,9 @@ function init() {
 }
 //AGGIUNGERE EVENTLISTNER CHE SALVA LA VALUE DELLA RISPOSTA CLICKATA SE CORRETTA NEL LOCAL STORAGE
 function saveDatas() {
+  arrayQuestions.push(questions[questionCounter - 1].question);
   arrayCorrectAnswers.push(questions[questionCounter - 1].correct_answer);
-  // let correctString = JSON.stringify(arrayCorrectAnswers);         
-  // localStorage.setItem("Correct", correctString);
-  //al click del bottone prendi il value della risposta che è stata portata
+ 
 }
 
 
@@ -146,12 +156,16 @@ btnBenchmark.addEventListener("click", function () {          //Event listner pe
   }
 
   if (questionCounter === questions.length) {
+
     //SALVA LE RISPOSTE CORRETTE E LE RISPOSTE SELEZIONATE DENTRO DUE ARRAY ARRAY JSON vedi(https://www.geeksforgeeks.org/how-to-store-an-array-in-localstorage/)
-    let correctString = JSON.stringify(arrayCorrectAnswers);        //AGGIUNTO PASSAGGIO IN LOCAL STORAGE DI CORRECT 
+    let correctString = JSON.stringify(arrayCorrectAnswers);                    //PASSAGGIO RISPOSTE CORRETTE
     localStorage.setItem("Correct", correctString);
-    let selectedString = JSON.stringify(arraySelectedAnswers);
+    let selectedString = JSON.stringify(arraySelectedAnswers);                  //PASSAGGIO RISPOSTE SELEZIONATE
     localStorage.setItem("Selected", selectedString);
-    window.location.href = "../../results.html";
+    const arrayDatas = JSON.stringify(arrayQuestions);                         //PASSAGGIO DOMANDE
+    localStorage.setItem("arrayDatas", arrayDatas);
+
+    window.location.replace("../../results.html");       //AGGIUNTO modo per non tornare indietro sulle domande
   } else {
     init();
   }
@@ -204,11 +218,16 @@ function setTimer() {
       init();
     }, 46000);
   } else {
-    let correctString = JSON.stringify(arrayCorrectAnswers);                       //AGGIUNTO PASSAGGIO IN LOCAL STORAGE DI CORRECT 
+    let correctString = JSON.stringify(arrayCorrectAnswers);                       //PASSAGGIO RISPOSTE CORRETTE
     localStorage.setItem("Correct", correctString);
-    let selectedString = JSON.stringify(arraySelectedAnswers);
+
+    let selectedString = JSON.stringify(arraySelectedAnswers);                     //PASSAGGIO RISPOSTE SCELTE
     localStorage.setItem("Selected", selectedString);
-    window.location.href = "../../results.html";
+
+    const arrayDatas = JSON.stringify(arrayQuestions);                         //PASSAGGIO DOMANDE
+    localStorage.setItem("arrayDatas", arrayDatas);
+
+    window.location.replace("../../results.html");                                
   }
 }
 

@@ -16,7 +16,7 @@
 <body>
     <main class="mainResultPage">
         <div class="container">
-            <header>
+            <header id = "resultsHeader">
                 <img src="assets/img/epicode_logo.png" alt="image.png" class="logo">
             </header>
             <div class="titleParagraph">
@@ -34,9 +34,9 @@
 
                     </canvas>
                     <div id="innerChart">
-                        <h4 id="examTitle">aaa</h4><br/>
-                        <p id="parExam">
-                        aaaa
+                        <h4 id="examTitle">Devi ancora conseguire l'esame!</h4><br/>
+                        <p id="parExam">torna nella pagina iniziale di <a href="welcome.html">Welcome</a>
+                        
                         </p>
                     </div>
                 </div>
@@ -51,10 +51,19 @@
                         <p class="percentageWrong bold"></p>
                          <p id="wrongAnswers"><!--<span>7</span> out of <span class="totalQuestions">10</span>--></p> 
                     </div>
+                    <p><a href="#questionList">ScrollDown to see your answers</a></p>
                 </div>
             </section>
             <section>
+                
                 <button type="submit" id="btnRateUs" onclick="rateUs()">RATE US!</button>
+            </section>
+            <hr>
+            <section id="questionSection">
+                <ul id="questionList">
+                
+                </ul>
+                <button type="submit" id="backWelcome" onclick="returnHome()">HOME</button>
             </section>
     </main>
 

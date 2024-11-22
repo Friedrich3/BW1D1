@@ -30,8 +30,6 @@ header {
 }
 
 h1 {
-
-
   font-size: 60px;
   font-weight: 350;
   color: white;
@@ -40,6 +38,11 @@ h1 {
 
 .title {
   font-family: "Outfit", serif;
+}
+
+.title img{
+  width: 90px;
+  padding-left: 2rem;
 }
 
 .bold {
@@ -61,6 +64,10 @@ h2 {
 
 ul {
   margin-left: 2rem;
+}
+
+ul span{
+  font-size: 18px;
 }
 
 .formContent {
@@ -312,6 +319,9 @@ filter: drop-shadow(0 0 5px #00ffff);
 /*----------PAGINA 3-------------- */
 
 /*TITOLO + PARAGRAFO*/
+#resultsHeader{
+  margin-bottom: 0;
+}
 
 .titleParagraph {
   text-align: center;
@@ -321,12 +331,11 @@ filter: drop-shadow(0 0 5px #00ffff);
   color: white;
   font-size: 60px;
   margin-bottom: 1rem;
-  margin-top: 1rem;
 }
 
 .titleParagraph p {
   font-size: 32px;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 /* PROVA GARFICO A DONUT*/
@@ -363,11 +372,17 @@ filter: drop-shadow(0 0 5px #00ffff);
   filter: drop-shadow(0 0 3px #0a113b);
   border: 2px solid #0a113b;
   /* METTE HIDDEN QUANDO FINITO*/
-  width: 15rem;
-  padding: 2rem 1rem;
+  padding: 2rem 4rem;
   text-align: center;
   margin-top: 2rem;
   transition: all 0.2s ease;
+}
+
+.boxOne:hover,
+.boxTwo:hover{
+  background-color: rgba(255, 255, 255, 0.137);
+  transform: scale(1.1);
+  transition: all 0.2s;
 }
 
 /*.boxOne {
@@ -413,6 +428,7 @@ filter: drop-shadow(0 0 5px #00ffff);
 #btnRateUs {
   padding: 1rem 3rem;
   margin-top: 5rem;
+  margin-bottom: 3rem;
   background: transparent;
   filter: drop-shadow(0 0 8px black);
   color: white;
@@ -434,6 +450,54 @@ filter: drop-shadow(0 0 5px #00ffff);
 .mainResultPage {
   text-align: center;
 }
+
+
+/* PAGINA 3 LISTA DOMANDE*/
+#questionList{
+  margin-left: 0;
+}
+
+#questionList li {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid white;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  width: 100%;
+  margin: 2rem 0;
+  list-style-type: none;
+  text-align: left;
+}
+#questionList li:hover{
+background-color: rgba(255, 255, 255, 0.2);
+}
+
+#questionList h4{
+  font-size: 30px;
+  margin-bottom: 1rem;
+}
+#questionList p {
+  font-size: 22px;
+  line-height: 2.5rem;
+}
+
+#backWelcome{
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+  background: transparent;
+  filter: drop-shadow(0 0 8px black);
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+  border: 3px solid white;
+  cursor: pointer;
+}
+#backWelcome:hover{
+background-color: #00ffff;
+border-color: #00ffff;
+color: black;
+}
+
+
 
 /*--------PAGINA 4--------*/
 
@@ -691,5 +755,9 @@ footer p img, footer p{
 footer a:hover{
   color: #d20094;
 }
+
+
+
+
 
 
