@@ -188,7 +188,8 @@ function setTimer() {
     clearTimeout(timerIntervalFunction);
     clearInterval(timerInterval);
     timeLeft = 45;
-    //updateTimer();
+    timerElement.textContent = timeLeft; // fix timer per visualizzare 45 sec
+    progressCircle.style.strokeDashoffset = 0; // fix timer per visualizzare 45 sec
     timerInterval = setInterval(updateTimer, 1000);
   if (questionCounter < questions.length) {
     timerIntervalFunction = setTimeout(function () {
@@ -201,7 +202,7 @@ function setTimer() {
         arraySelectedAnswers.push("null");
       }
       init();
-    }, 46000);
+    }, 45000);
   } else {
     let correctString = JSON.stringify(arrayCorrectAnswers);                       //AGGIUNTO PASSAGGIO IN LOCAL STORAGE DI CORRECT 
     localStorage.setItem("Correct", correctString);
