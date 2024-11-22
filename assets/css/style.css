@@ -700,8 +700,9 @@ color: black;
 }
 
 .feedbackPage p {
-  padding: 3rem 0 10rem 0;
+  padding: 0 0 10rem 0;
   font-size: 22px;
+  font-family: "Outfit", serif;
 }
 
 .feedbackPage button{
@@ -718,7 +719,13 @@ color: black;
 .feedbackTitle img {
   display: inline;
   width: 100px;
-  padding-right: 2rem;
+  padding-right: 0.5rem;
+}
+
+.feedbackTitle,
+.feedbackTitle img{
+  display: inline-block;
+  vertical-align: middle;
 }
 
 #btnBack {
@@ -756,6 +763,10 @@ color: black;
 footer{
   text-align: center;
   font-size: 20px;
+}
+
+footer a{
+  font-family: "Outfit", serif;
 }
 
 footer p img{
