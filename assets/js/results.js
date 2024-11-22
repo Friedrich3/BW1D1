@@ -115,7 +115,7 @@ function answerList(){
     const newCorrAnswer = document.createElement("p");
     const newWrongAnswer = document.createElement("p");
 
-    newQuestion.innerText = `${i+1}) ${arrayQuestions[i]}`;
+    newQuestion.innerText = `${i+1}. ${arrayQuestions[i]}`;
     newCorrAnswer.innerHTML = `Correct Answer: ${arrayCorrectAnswers[i]} &#9989;`;
     newWrongAnswer.innerHTML = `Your Answer: ${arraySelectedAnswers[i]} &#10060;`;
 
