@@ -46,7 +46,8 @@ function init() {
           "#00ffff",
           "#d20094"
         ],
-        hoverOffset: 2
+        hoverOffset: 2,
+        
       }]
     },
   });

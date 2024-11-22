@@ -342,6 +342,10 @@ filter: drop-shadow(0 0 5px #00ffff);
 .chartPosition {
   position: relative;
 }
+.chartPosition canvas, 
+.chartPosition svg {
+  filter: drop-shadow(10px 0px 10px #0000009A);
+}
 
 #innerChart {
   max-width: 13rem;
@@ -366,16 +370,26 @@ filter: drop-shadow(0 0 5px #00ffff);
   vertical-align: middle;
 }
 
+#anchor {
+  margin-top: 1rem;
+  
+}
+#anchor a{
+  color: #00ffff;
+  font-family: "Outfit", serif;
+}
+
 .boxOne,
 .boxTwo {
   background-color: transparent;
   filter: drop-shadow(0 0 3px #0a113b);
-  border: 2px solid #0a113b;
-  /* METTE HIDDEN QUANDO FINITO*/
+  border: 2px solid #80008080;    
   padding: 2rem 4rem;
   text-align: center;
   margin-top: 2rem;
   transition: all 0.2s ease;
+  box-shadow: 5px 5px 8px #0000009A;
+  border-radius: 8px;
 }
 
 .boxOne:hover,
@@ -473,7 +487,9 @@ background-color: rgba(255, 255, 255, 0.2);
 
 #questionList h4{
   font-size: 30px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 #questionList p {
   font-size: 22px;
