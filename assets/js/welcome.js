@@ -2,6 +2,8 @@ const checkbox = document.getElementById("termsCheckbox");
 const errorMessage = document.getElementById("errorMessage");
 const bntWelcome = document.getElementById("bntWelcome");
 
+
+
 bntWelcome.addEventListener("click", function () {
   if (!checkbox.checked) {
     errorMessage.style.display = "block";
