@@ -273,9 +273,26 @@ input[type="checkbox"]:checked::before {
   word-spacing: 1px;
 }
 
+
 #benchmarkButton {
+  background: transparent;
+  filter: drop-shadow(0 0 8px black);
+  color: rgba(206, 206, 206, 0.658);
+  font-weight: bold;
+  font-size: 25px;
+  border: 3px solid rgba(206, 206, 206, 0.658);
+  cursor: pointer;
   margin: 0 12% 0 0;
   float: right;
+}
+
+#benchmarkButton.active {
+
+background-color: #00ffff;
+color: #0a113b;
+border: 2px #00ffff;
+filter: drop-shadow(0 0 5px #00ffff);
+
 }
 
 #questionNumber,
@@ -395,6 +412,12 @@ input[type="checkbox"]:checked::before {
   font-size: 20px;
 }
 
+.boxOne:hover, .boxTwo:hover {
+  background-color: rgba(255, 255, 255, 0.137);
+  transform: scale(1.1);
+  transition: all 0.2s
+}
+
 .percentageWrong,
 .percentageRight {
   font-size: 35px;
@@ -427,6 +450,54 @@ input[type="checkbox"]:checked::before {
 .mainResultPage {
   text-align: center;
 }
+
+
+/* PAGINA 3 LISTA DOMANDE*/
+#questionList{
+  margin-left: 0;
+}
+
+#questionList li {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid white;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  width: 100%;
+  margin: 2rem 0;
+  list-style-type: none;
+  text-align: left;
+}
+#questionList li:hover{
+background-color: rgba(255, 255, 255, 0.2);
+}
+
+#questionList h4{
+  font-size: 30px;
+  margin-bottom: 1rem;
+}
+#questionList p {
+  font-size: 22px;
+  line-height: 2.5rem;
+}
+
+#backWelcome{
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+  background: transparent;
+  filter: drop-shadow(0 0 8px black);
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+  border: 3px solid white;
+  cursor: pointer;
+}
+#backWelcome:hover{
+background-color: #00ffff;
+border-color: #00ffff;
+color: black;
+}
+
+
 
 /*--------PAGINA 4--------*/
 
@@ -690,47 +761,3 @@ footer a:hover{
 
 
 
-/* PAGINA 3 LISTA DOMANDE*/
-#questionList{
-  margin-left: 0;
-}
-
-#questionList li {
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 2px solid white;
-  border-radius: 8px;
-  padding: 1rem 2rem;
-  width: 100%;
-  margin: 2rem 0;
-  list-style-type: none;
-  text-align: left;
-}
-#questionList li:hover{
-background-color: rgba(255, 255, 255, 0.2);
-}
-
-#questionList h4{
-  font-size: 30px;
-  margin-bottom: 1rem;
-}
-#questionList p {
-  font-size: 22px;
-  line-height: 2.5rem;
-}
-
-#backWelcome{
-  padding: 1rem 2rem;
-  margin-top: 1rem;
-  background: transparent;
-  filter: drop-shadow(0 0 8px black);
-  color: white;
-  font-weight: bold;
-  font-size: 25px;
-  border: 3px solid white;
-  cursor: pointer;
-}
-#backWelcome:hover{
-background-color: #00ffff;
-border-color: #00ffff;
-color: black;
-}

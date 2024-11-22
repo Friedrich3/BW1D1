@@ -202,7 +202,8 @@ function setTimer() {
     clearTimeout(timerIntervalFunction);
     clearInterval(timerInterval);
     timeLeft = 45;
-    //updateTimer();
+    timerElement.textContent = timeLeft; // fix timer per visualizzare 45 sec
+    progressCircle.style.strokeDashoffset = 0; // fix timer per visualizzare 45 sec
     timerInterval = setInterval(updateTimer, 1000);
   if (questionCounter < questions.length) {
     timerIntervalFunction = setTimeout(function () {
@@ -310,3 +311,25 @@ function updateTimer() {
   }
 
 }
+
+
+
+document.addEventListener('DOMContentLoaded', function() { // Caricamento del DOM completato prima di eseguire la funzione
+  const answerList = document.getElementById('answerList'); // seleziono la lista delle risposte
+  const btnBenchmark = document.getElementById('benchmarkButton'); // seleziono il pulsante benchmark
+
+  btnBenchmark.disabled = true; // disabilitazione del pulsate all'inizio per non renderlo cliccabile prima di selezionare una risposta
+
+  answerList.addEventListener('click', function(event) { //event lister al click su una risposta
+    if (event.target.tagName === 'LI') { // verifica se l'elemento cliccato è una risposta / li
+      btnBenchmark.disabled = false; // abilitiamo il pulsante dopo selezione LI
+      btnBenchmark.classList.add('active'); // cambiare stile al pulsante
+    }
+  });
+
+  btnBenchmark.addEventListener('click', function() { // funzione al click sul pulsante benchmark
+    this.disabled = true; // disabilitiamo il pulsante dopo il click
+    this.classList.remove('active'); // rimuoviamo lo stile al pulsante
+  });
+});
+
